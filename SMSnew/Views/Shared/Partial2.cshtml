@@ -1,0 +1,23 @@
+﻿@model SMSnew.Models.Circular
+
+
+
+<div>
+    <div class="row">       
+                <label class="control-label text-right col-md-3">Circular No</label>
+                 @Html.DisplayFor(model => model.CirNumber) 
+    </div>
+    <div class="row">
+                <label class="control-label text-right col-md-3">Subject</label>
+                @Html.DisplayFor(model => model.CirSubject)
+    </div>
+    <div class="row">
+                <label class="control-label text-right col-md-3">Issue Date</label>
+                @Html.DisplayFor(model => model.CirIssueDate)
+    </div>
+    <div class="row">
+                <label class="control-label text-right col-md-3">Description</label>
+                @Html.DisplayFor(model => model.CirDescription)
+    </div>
+</div>
+  

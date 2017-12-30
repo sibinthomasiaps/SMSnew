@@ -1,0 +1,221 @@
+﻿@model IEnumerable<SMSnew.Models.Holiday>
+
+@{
+    ViewBag.Title = "Holidaygrid";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+  @using (Html.BeginForm("Holidaygrid", "Holiday", FormMethod.Post))      
+  {
+
+<html lang="en">
+
+@section Styles
+{
+
+<link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- morris CSS -->
+<link href="@Url.Content("~/Content/template/")assets/plugins/morrisjs/morris.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+<!-- You can change the theme colors from here -->
+<link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+<link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+<link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+   
+   
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+               
+                <div class="card">
+                    <div class="card-body">
+                        <div id="basicgrid">
+                            
+                            <table class="jsgrid-table table table-striped table-hover">
+                            <tr class="jsgrid-header-row">
+                                <th class="jsgrid-header-cell jsgrid-header-sortable jsgrid-header-sort jsgrid-header-sort-desc" style="width: 150px;">Holiday Date</th>
+                                <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable" style="width: 150px;">Holiday Description</th>
+                                <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 200px;">Holiday Status</th>
+                                <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
+                                @*<input type="submit" name="submit" value="Search" class="btn btn-primary" />*@
+                                </th></tr>
+                            <tr class="jsgrid-filter-row">
+                                <td class="jsgrid-cell" style="width: 150px;">
+                                <input type="text" class="form-control input-sm" id="date" name="holidaydate" placeholder="Holiday Date"></td>
+                                <td class="jsgrid-cell jsgrid-align-right" style="width: 150px;">
+                                    <input type="text" class="form-control input-sm" name="holidaydescription" placeholder="Holiday Description"></td>
+                              
+                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                    <select class="form-control input-sm" name="holidaystatus" placeholder="Holiday Status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </td>
+                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                    <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+                                </td>
+                                </tr>
+                                @foreach (var item in Model)
+                                            {
+
+                                            <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.HolidayDate)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.HolidayDescription)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.HolidayStatus)</td>
+
+                                    </tr>
+                                }
+                                    </table>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="slimscrollright">
+                <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>With Light sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                        <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                        <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                        <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                        <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                        <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                        <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                        <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                        <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                        <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                        <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                        <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                    </ul>
+                    <ul class="m-t-20 chatonline">
+                        <li><b>Chat option</b></li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    @section Scripts
+{
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+     <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--sparkline JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--morris JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/raphael/raphael-min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/morrisjs/morris.min.js"></script>
+    <!-- Chart JS -->
+    <script src="@Url.Content("~/Content/template/")js/dashboard1.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/moment/moment.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")js/validation.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+    <script>
+        $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+    $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+    $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+
+    $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
+
+    jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    jQuery('#date-range').datepicker({
+        toggleActive: true
+    });
+    jQuery('#datepicker-inline').datepicker({
+        todayHighlight: true
+    });
+    </script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/html5-editor/bootstrap-wysihtml5.js"></script>
+
+   }
+    @*<footer class="footer">
+        © 2017 Admin Press Admin by themedesigner.in
+    </footer>*@
+   
+
+</html>
+
+}

@@ -1,0 +1,122 @@
+﻿@model SMSnew.Models.Attendance
+
+@{
+    ViewBag.Title = "StudAttendanceView";
+    Layout = "~/Views/Shared/_studentLayout .cshtml";
+}
+
+@section Styles
+{
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+<style type="text/css">
+   
+     .HighlightedGreen a
+  {
+       background-color : Green !important;
+       background-image :none !important;
+       color: White !important;
+       font-weight:bold !important;
+       font-size: 12pt;
+      }
+   .HighlightedRed  a
+  {
+       background-color : red  !important;
+       background-image :none !important;
+       color: White !important;
+       font-weight:bold !important;
+       font-size: 12pt;
+      }
+
+    
+</style>
+    }
+
+        @using (Html.BeginForm())
+        {
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Attendance</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <h3 class="card-title">View Attendance</h3>
+                                        <div id="datepicker"></div>
+                                        <input type="hidden" id="count" name="count" value="@ViewBag.count">
+                                       
+                                        <div>
+                                        @{
+                                           foreach (var item in ViewBag.attendance)
+                                           {
+                                             <input type="hidden" id="txt12" name="txt1" value="@item.AttendanceDate">
+                                             <input type="hidden" id="tt12" name="tt1" value="@item.AttStatus">
+
+                                           }
+                                        }
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+               
+        }
+
+
+    @section Scripts
+{
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+                @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
+                <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+ 
+   <script type="text/javascript">
+              var eventDates = new Array();
+                var i = 0;
+                var value = 0;
+                var cou = 0;
+                cou = document.getElementById("count").value;
+
+                while (i < cou) {
+
+                    value = document.getElementsByName('txt1')[i].value;
+                    value1 = document.getElementsByName('tt1')[i].value;
+                    eventDates[new Date(value)] = value1;
+                    i++;
+
+
+                }
+             $('#datepicker').datepicker({
+            beforeShowDay: function (date) {
+                var Highlight = eventDates[date];
+                var color = "";
+                if (Highlight) {
+                    if (Highlight == "Absent") {
+                        color = "Red";
+                    } else {
+                        color = "Green";
+                    }
+
+                    return [true, "Highlighted" + color, Highlight];
+                }
+                else {
+                    return [true, '', ''];
+                }
+            }
+        });
+
+            </script>
+        }

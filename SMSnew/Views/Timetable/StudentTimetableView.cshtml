@@ -1,0 +1,267 @@
+﻿@model IEnumerable<SMSnew.Models.Timetable>
+
+@{
+    ViewBag.Title = "StudentTimetableView";
+    Layout = "~/Views/Shared/_studentLayout .cshtml";
+}
+
+        @using (Html.BeginForm())
+        {
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">TimeTable</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">                                  
+                                        <h3 class="card-title"></h3>
+                                        <hr>                               
+                                    <div class="table-responsive">
+                                        <table class="table color-table inverse-table table display table-bordered table-striped dataTable">
+
+                                            <thead>
+                                                <tr>
+                                                    @*<th>Day</th>
+                    <th>09:00 - 09:45</th>
+                    <th>09:45 - 10:50</th>
+                    <th>Break</th>
+                    <th>11-00 - 11:45</th>
+                    <th>11:45 - 12:30</th>
+                    <th>Break</th>
+                    <th>01:00 - 01:45</th>
+                    <th>01:45 - 02:50</th>
+                    <th>Break</th>
+                    <th>03-00 - 03:45</th>
+                    <th>03:45 - 04:30</th>*@
+
+                                                    <th>Day</th>
+                                                    <th>T1</th>
+                                                    <th>T2</th>
+                                                    <th>Break</th>
+                                                    <th>T3</th>
+                                                    <th>T4</th>
+                                                    <th>Break</th>
+                                                    <th>T5</th>
+                                                    <th>T6</th>
+                                                    <th>Break</th>
+                                                    <th>T7</th>
+                                                    <th>T8</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Monday</th>
+                                                    @foreach (var item in ViewBag.monday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Tuesday</th>
+                                                    @foreach (var item in ViewBag.tuesday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+                                                </tr>
+                                                <tr>
+                                                    <th>Wednesday</th>
+                                                    @foreach (var item in ViewBag.wednesday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+
+                                                </tr>
+                                                <tr>
+                                                    <th>Thursday</th>
+
+
+                                                    @foreach (var item in ViewBag.thursday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Friday</th>
+
+                                                    @foreach (var item in ViewBag.friday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Saturday</th>
+
+                                                    @foreach (var item in ViewBag.saturday)
+                                                    {
+                                                        <td>@item.Subject_1</td>
+                                                        <td>@item.Subject_2</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_3</td>
+                                                        <td>@item.Subject_4</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_5</td>
+                                                        <td>@item.Subject_6</td>
+                                                        <td><span class="label label-rouded label-danger pull-right">Break</span></td>
+                                                        <td>@item.Subject_7</td>
+                                                        <td>@item.Subject_8</td>
+                                                    }
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+  
+        }
+@section Scripts
+{
+    
+}
+
+

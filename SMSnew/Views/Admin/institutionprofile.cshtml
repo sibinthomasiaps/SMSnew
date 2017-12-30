@@ -1,0 +1,422 @@
+﻿@model SMSnew.Models.School
+@{
+    ViewBag.Title = "institutionprofile";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Dashboard</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+            <div>
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <div>
+         
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("institutionprofile", "Admin", FormMethod.Post,
+                                            new { enctype = "multipart/form-data" }))
+{
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">Institution Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" class="form-horizontal">
+                            <div class="form-body">
+                                <h3 class="box-title">Institution Info</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Name" name="SchoolName" required>
+                                                <small class="form-control-feedback"> This is inline help </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        @*<div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Email</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Email" name="SchoolEmail">
+                                                <small class="form-control-feedback"> This field has error. </small>
+                                            </div>
+                                        </div>*@
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Email</label>
+                                            <div class="col-md-9 controls">
+                                                <input type="email" name="SchoolEmail" class="form-control" placeholder="sophie@example.com" required data-validation-required-message="This field is required">
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Code" name="SchoolCode" required>
+                                                <small class="form-control-feedback"> school code. </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        @*<div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Land Line</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="landline" name="SchoolPhone">
+                                            </div>
+                                        </div>*@
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Land Line</label>
+                                            <div class="controls col-md-9">
+                                                <input type="text" name="SchoolPhone" id="SchoolPhone" class="form-control" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @*<div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Mobile</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Mobile" name="SchoolMobile">
+                                            </div>
+                                        </div>*@
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3">Mobile</label>
+                                            <div class="controls col-md-9">
+                                                <input type="text" name="SchoolMobile" id="SchoolMobile" class="form-control" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Contact Person</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    <input type="text" class="form-control" placeholder="Name" name="SchoolContactPerson" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">GST Code</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    <input type="text" class="form-control" placeholder="GST" name="SchoolGST" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Language</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    <input type="text" class="form-control" placeholder="Language" name="SchoolLanguage" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Currency Type</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Currency" name="SchoolCurrencyType" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3">Time zone</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    <input type="text" class="form-control" placeholder="Time" name="SchoolTimeZone" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Copy write details</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    <input type="text" class="form-control" placeholder="Copy write" name="SchoolCopyright" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Logo</label>
+                                            <div class="col-md-9">
+                                                <div class="radio-list">
+                                                    @*//   <input type="file" id="inputfilenow" name="inputfilenow" class="dropify" / >*@
+                                                    <input type="file" name="file" id="file" style="width: 100%;" /> <br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">Address</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Address 1</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolAddress1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Address 2</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolAddress2" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">City</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolCity" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">State</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolState" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Post Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolCode" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label  col-md-3">Country</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="SchoolCountry" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                            </div>
+                            <hr>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn btn-success" name="submit" value="submit">Submit</button>
+                                                <button type="button" class="btn btn-inverse" name="cancel" value="cancel">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <div class="right-sidebar">
+            <div class="slimscrollright">
+                <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>With Light sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                        <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                        <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                        <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                        <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                        <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                        <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                        <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                        <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                        <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                        <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                        <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                    </ul>
+                    <ul class="m-t-20 chatonline">
+                        <li><b>Chat option</b></li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+}
+
+
+
+
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+<!-- ============================================================== -->
+
+
+
+
+
+
+
+
+

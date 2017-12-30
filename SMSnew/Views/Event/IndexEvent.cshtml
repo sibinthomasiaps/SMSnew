@@ -1,0 +1,228 @@
+﻿@model IEnumerable<SMSnew.Models.vw_IndexEvent>
+@{
+    ViewBag.Title = "IndexEvent";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@section Styles
+{
+    <link href="@Url.Content("~/Content/template/")assets/plugins/footable/css/footable.core.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+@using (Html.BeginForm())
+{
+
+
+
+ <!-- Container fluid -->
+ <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Event</h4>
+                        <h6 class="card-subtitle">Event View</h6>
+                        <table id="demo-foo-row-toggler" class="table toggle-circle table-hover display nowrap table table-hover table-striped table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th data-toggle="true"></th>
+                                    <th data-hide="phone"></th>
+                                    <th data-hide="phone">Type</th>
+                                    <th data-hide="phone">Name</th>
+                                    <th data-hide="phone">Venue</th>
+                                    <th data-hide="phone">Location</th>
+                                    <th data-hide="phone">Action</th>
+                                    <th data-hide="all">Country</th>
+                                    <th data-hide="all">Details</th>
+                                    <th data-hide="all">Email</th>
+                                    <th data-hide="all">Phone</th>
+                                    <th data-hide="all">Fax</th>
+                                    <th data-hide="all">Participant Number</th>
+                                    <th data-hide="all">In Charge</th>
+                                    <th data-hide="all">Check In date</th>
+                                    <th data-hide="all">Check Out date</th>
+                                    <th data-hide="all">File</th>
+                                    <th data-hide="all">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int index = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td>@(++index)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventVenue)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventLocation)</td>
+                                        <td>
+                                            <a title="Edit" href="@Url.Action("EditEvent", "Event", new { id = item.EventRegID })" class="fa fa-pencil"></a>
+                                            <a title="Delete" href="@Url.Action("DeleteEvent", "Event", new { id = item.EventRegID })" class="fa fa-trash" onclick="return confirm('Are you sure wants to delete ?');"></a>
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventCountry)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventDetails)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventEmail)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventPH)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventFax)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EventParticipantsNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EmpFirstName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CheckInDate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CheckOutDate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.UploadFiles)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+                                    }
+@section Scripts
+{
+    <!-- Footable -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/footable/js/footable.all.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <!--FooTable init-->
+    <!--FooTable init-->
+    <script src="@Url.Content("~/Content/template/")js/footable-init.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> <!-- Clock Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script> <!-- Color Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> <!-- Date range Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- This is data table -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- end - This is for export functionality only -->
+    <script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function () {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#demo-foo-row-toggler').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+
+
+
+    <script>
+        var filesize = document.getElementById()
+    </script>
+    <script>
+        var AssignmentDetails = function (AssignmentId) {
+            var url = "/Assignment/AssignmentDetails?AssignmentId=" + AssignmentId;
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+            });
+        };
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#demo-foo-row-toggler').DataTable();
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    "columnDefs": [{
+                        "visible": false,
+                        "targets": 2
+                    }],
+                    "order": [
+                    [2, 'asc']
+                    ],
+                    "displayLength": 25,
+                    "drawCallback": function (settings) {
+                        var api = this.api();
+                        var rows = api.rows({
+                            page: 'current'
+                        }).nodes();
+                        var last = null;
+                        api.column(2, {
+                            page: 'current'
+                        }).data().each(function (group, i) {
+                            if (last !== group) {
+                                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                last = group;
+                            }
+                        });
+                    }
+                });
+                // Order by the grouping
+                $('#example tbody').on('click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                        table.order([2, 'desc']).draw();
+                    } else {
+                        table.order([2, 'asc']).draw();
+                    }
+                });
+            });
+        });
+
+    </script>
+}

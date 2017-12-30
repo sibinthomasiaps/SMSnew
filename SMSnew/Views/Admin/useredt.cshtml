@@ -1,0 +1,340 @@
+﻿@model SMSnew.Models.User
+@{
+    ViewBag.Title = "useredt";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Dashboard</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+            <div>
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <div>
+         
+            <html>
+            <head>
+                <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+                <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+            </head>
+            <body>
+                @using (Html.BeginForm())
+                {
+
+ <!-- Container fluid  -->
+        <!-- ============================================================== -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <!-- Row -->
+                        <div class="row">
+
+                        </div>
+                        <!-- Row -->
+                        <!-- Row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card card-outline-info">
+                                    <div class="card-header">
+                                        <h4 class="m-b-0 text-white">User Profile</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="#" class="form-horizontal">
+                                            <div class="form-body">
+                                                <h3 class="box-title">Profile Update</h3>
+                                                <hr class="m-t-0 m-b-40">
+                                                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.Userid)*@
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="control-label text-right col-md-3"> Mail Id</label>
+                                                            <div class="col-md-9">
+                                                                @Html.EditorFor(model => model.Mailid, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Mailid, "", new { @class = "text-danger" })
+
+                                                                <small class="form-control-feedback"> This is inline help </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--/span-->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="control-label text-right col-md-3">User Type</label>
+                                                            <div class="col-md-9">
+                                                                @*@Html.DropDownList("getgroup", null as SelectList, "Please select Class", new { @class = "form-control" })*@
+                                                                @Html.DropDownListFor(model => model.UserType, ViewBag.getgroup as SelectList, new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/row-->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+
+                                                            <div class="col-md-9">
+
+
+
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="row">
+                                                            <div class="col-md-offset-3 col-md-9">
+
+                                                                <button type="submit" class="btn btn-success" value="save" name="save" onclick="SelectedIndexChanged()">Update</button>
+                                                                <button type="submit" class="btn btn-inverse" value="cancel" name="cancel">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6"> </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- Row -->
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+
+
+                        <script type="text/javascript">
+    function SelectedIndexChanged()
+    {
+        var e = document.getElementById("getgroup");
+        var e = document.getElementById("getgroup");
+        var str = e.options[e.selectedIndex].value;
+        //strUser.toString();
+       var str = str.toString()
+        alert(str);
+        // alert(strUser.toString());
+
+        //var textcontrol = document.getElementById("UserType");
+        //textcontrol.value = "Arun";
+      //  return $.post(/AdminController/userprofile/str)
+
+       //window.location = "userprofile?str=" + str;
+        }
+                        </script>
+
+                    </div>
+                }
+            </body>
+        </html>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+
+
+
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+<!-- ============================================================== -->
+
+
+
+
+
+
+
+<html>
+<head>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+ <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+
+            </div>
+            <!-- Row -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">User Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="#" class="form-horizontal">
+                                <div class="form-body">
+                                    <h3 class="box-title">Profile Creation</h3>
+                                    <hr class="m-t-0 m-b-40">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Userid)
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="control-label text-right col-md-3"> Mail Id</label>
+                                                <div class="col-md-9">
+                                                    @Html.EditorFor(model => model.Mailid, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Mailid, "", new { @class = "text-danger" })
+                                                  
+                                                    <small class="form-control-feedback"> This is inline help </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="control-label text-right col-md-3">User Type</label>
+                                                <div class="col-md-9">
+                                                    @Html.DropDownList("getgroup", null as SelectList, "Please select Class", new { @class = "form-control" })
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                            
+                                                <div class="col-md-9">
+
+                                                
+
+
+
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div>
+                                <hr>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-offset-3 col-md-9">
+
+                                                    <button type="submit" class="btn btn-success" value="save" name="save" onclick="SelectedIndexChanged()">Update</button>
+                                                    <button type="submit" class="btn btn-inverse" value="cancel" name="cancel">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6"> </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <!-- Row -->
+            <!-- Row -->
+            <!-- Row -->
+            <!-- Row -->
+            <!-- Row -->
+            <!-- Row -->
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+
+
+            <script type="text/javascript">
+    function SelectedIndexChanged()
+    {
+        var e = document.getElementById("getgroup");
+        var e = document.getElementById("getgroup");
+        var str = e.options[e.selectedIndex].value;
+        //strUser.toString();
+       var str = str.toString()
+        alert(str);
+        // alert(strUser.toString());
+
+        //var textcontrol = document.getElementById("UserType");
+        //textcontrol.value = "Arun";
+      //  return $.post(/AdminController/userprofile/str)
+
+       //window.location = "userprofile?str=" + str;
+        }
+            </script>
+
+        </div>
+    }
+</body>
+</html>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+

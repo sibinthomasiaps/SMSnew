@@ -1,0 +1,500 @@
+﻿@model SMSnew.Models.TC
+@{
+    ViewBag.Title = "StudentTcDataInsertion";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+
+<div class="page-wrapper">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+
+    <div>
+
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Other Sample form</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <h3 class="card-title">Person Info</h3>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Class</label>
+                                                    @Html.DropDownList("ClassLastStudied", ViewBag.cls as SelectList, "Please select", new { @class = "form-control", @required = "required" })
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">Student Name</label>
+
+                                                <div class="col-md-12">
+                                                    @Html.DropDownListFor(model => model.StudId, new SelectList(""), "please select class", new { id = "StudId", @class = "select2 form-control", @required = "required", @style = "width:100%" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">Guardian Name</label>
+                                                <input type="text" class="form-control" id="GuardianName" name="GuardianName" required>
+
+
+                                            </div>
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">Any Pending Fees</label>
+                                                <input type="text" class="form-control" id="AnyPendingFees" name="AnyPendingFees" required>
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="form-group row">
+
+                                        </div>
+
+
+
+                                        <div class="row ">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Working Days</label>
+                                                    <div class="controls">
+                                                        <input type="text" id="WorkingDays" class="form-control" name="WorkingDays" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group  ">
+                                                    <label class="control-label">Working Days Present</label>
+                                                    <div class="controls">
+                                                        <input type="text" id="WorkingDaysPresent" class="form-control" name="WorkingDaysPresent" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">Extra Curricular</label>
+
+                                                <input type="text" id="ExtraCurricular" name="ExtraCurricular" class="form-control" required>
+
+
+                                            </div>
+
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">TC Application Date</label>
+
+                                                <input type="text" class="form-control" id="mdate3" name="TCApplicationDate" required>
+
+
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+
+                                        <div class="form-group row">
+                                            <div class="controls col-md-6">
+
+                                                <label class="control-label">Reason For Leaving</label>
+                                                <input type="text" class="form-control" id="ReasonForLeaving" name="ReasonForLeaving" required>
+
+
+
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label class="control-label">Remarks</label>
+
+                                                    <input type="text" id="Remarks" name="Remarks" class="form-control" required>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="controls col-md-12">
+
+                                                <label class="control-label">Modified Description</label>
+
+
+                                                <textarea class="form-control" rows="3" id="ModifiedDescription" name="ModifiedDescription"></textarea>
+
+
+
+                                                @*<input type="text" class="form-control" id="ModifiedDescription" name="ModifiedDescription" required>*@
+
+
+
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                        <div class="form-actions">
+                                            <button type="submit" id="save" class="btn btn-success" value="save" name="save"> <i class="fa fa-check"></i> Save</button>
+                                            @*<button type="submit" class="btn btn-inverse" value="cancel" name="cancel">Cancel</button>
+                                            @Html.ActionLink("cancel", "StudentTcDataView")*@
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Go to list", "StudentTcDataView")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-sidebar">
+                <div class="slimscrollright">
+                    <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                    <div class="r-panel-body">
+                        <ul id="themecolors" class="m-t-20">
+                            <li><b>With Light sidebar</b></li>
+                            <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                            <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                            <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                            <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                            <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                            <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                            <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                            <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                            <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                            <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                            <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                            <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                            <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                        </ul>
+                        <ul class="m-t-20 chatonline">
+                            <li><b>Chat option</b></li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        }
+
+    </div>
+
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- page CSS -->
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer">
+        © 2017 Admin Press Admin by themedesigner.in
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/switchery/dist/switchery.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/template/")assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+
+
+
+
+
+    <script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#ClassLastStudied").change(function () {
+                //  $("#StudId").empty();
+                $.get("/StudTc/GetDivisionList", { ClassLastStudied: $("#ClassLastStudied").val() }, function (data) {
+                    $("#StudId").empty();
+                    $("#StudId").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                    $.each(data, function (index, row) {
+                        $("#StudId").append("<option value ='" + row.StudentID + "'>" + row.StudFirstName + " " + row.StudLastName + "</option>")
+                    });
+                });
+            })
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#StudId").change(function () {
+                var e = $("#StudId").val();
+    
+                //  alert(e);
+                $.get("/StudTc/GetDivisionList2", { StudId: $("#StudId").val() }, function (data1) {
+                    document.getElementById("GuardianName").value = data1;
+                });
+            })
+        });
+    </script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/switchery/dist/switchery.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/template/")assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            $('.js-switch').each(function () {
+                new Switchery($(this)[0], $(this).data());
+            });
+            // For select 2
+            $(".select2").select2();
+            $('.selectpicker').selectpicker();
+            //Bootstrap-TouchSpin
+            $(".vertical-spin").TouchSpin({
+                verticalbuttons: true,
+                verticalupclass: 'ti-plus',
+                verticaldownclass: 'ti-minus'
+            });
+            var vspinTrue = $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+            });
+            if (vspinTrue) {
+                $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
+            }
+            $("input[name='tch1']").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%'
+            });
+            $("input[name='tch2']").TouchSpin({
+                min: -1000000000,
+                max: 1000000000,
+                stepinterval: 50,
+                maxboostedstep: 10000000,
+                prefix: '$'
+            });
+            $("input[name='tch3']").TouchSpin();
+            $("input[name='tch3_22']").TouchSpin({
+                initval: 40
+            });
+            $("input[name='tch5']").TouchSpin({
+                prefix: "pre",
+                postfix: "post"
+            });
+            // For multiselect
+            $('#pre-selected-options').multiSelect();
+            $('#optgroup').multiSelect({
+                selectableOptgroup: true
+            });
+            $('#public-methods').multiSelect();
+            $('#select-all').click(function () {
+                $('#public-methods').multiSelect('select_all');
+                return false;
+            });
+            $('#deselect-all').click(function () {
+                $('#public-methods').multiSelect('deselect_all');
+                return false;
+            });
+            $('#refresh').on('click', function () {
+                $('#public-methods').multiSelect('refresh');
+                return false;
+            });
+            $('#add-option').on('click', function () {
+                $('#public-methods').multiSelect('addOption', {
+                    value: 42,
+                    text: 'test 42',
+                    index: 0
+                });
+                return false;
+            });
+            $(".ajax").select2({
+                ajax: {
+                    url: "https://api.github.com/search/repositories",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function (data, params) {
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                        params.page = params.page || 1;
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function (markup) {
+                    return markup;
+                }, // let our custom formatter work
+                minimumInputLength: 1,
+                templateResult: formatRepo, // omitted for brevity, see the source of this page
+                templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+            });
+        });
+    </script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+
+    <script type="text/javascript">
+        $(function () {
+            $('#save').click(function () {
+                var txt = $('#StudId');
+                if ($("#StudId").val() == "Please select student") {
+                    alert("Please select");
+                    return false;
+                }
+                var txt = $('#StudId');
+                if ($("#StudId").val() == "please select Student") {
+                    alert("Please select a Student");
+                    return false;
+                }
+                var txt = $('#StudId');
+                if ($("#StudId").val() == "") {
+                    alert("Please select a student");
+                    return false;
+                }
+
+
+            })
+        });
+    </script>

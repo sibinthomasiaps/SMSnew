@@ -1,0 +1,461 @@
+﻿@model SMSnew.Models.Teacher
+
+@{
+    ViewBag.Title = "EditTeacherList";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@section Styles
+{
+    <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+        @using (Html.BeginForm("TeacherEdit1", "Teacher", FormMethod.Post))
+        {
+            
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body wizard-content">
+                                <h4 class="card-title">Welcome to Teachers Registration </h4>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.TeacherID)
+                                @*//<h6 class="card-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website</a></h6>*@
+                                <form action="#" class="tab-wizard wizard-circle"></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Validation wizard -->
+                <div class="row" id="validationtedit">
+                    <div class="col-12">
+                        <div class="card wizard-content">
+                            <div class="card-body">
+                                <h4 class="card-title">Step wizard with validation</h4>
+                                <form action="#" class="validationtedit-wizard wizard-circle">
+                                    <!-- Step 1 -->
+                                    <h6>Profile Info</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tfirstname"> First Name : <span class="danger">*</span> </label>
+                                                    @Html.EditorFor(model => model.TeacherFirstName, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tlastname"> Last Name : <span class="danger">*</span> </label>
+                                                    @Html.EditorFor(model => model.TeacherLastName, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tgender"> Gender : <span class="danger">*</span> </label>
+                                                    @if (Model.TeacherGender == "Male")
+                                                    {
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" checked="" class="custom-control-input" value="Male">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Male</span>
+                                                        </label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" value="Female" class="custom-control-input">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Female</span>
+                                                        </label>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" class="custom-control-input" value="Male">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Male</span>
+                                                        </label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" checked="" value="Female" class="custom-control-input">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Female</span>
+                                                        </label>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tbloodgroup">Blood Group :</label>
+                                                    @Html.DropDownListFor(model => model.TeacherBloodGroup, new List<SelectListItem>
+    {
+    new SelectListItem{Text="A Positive"},
+     new SelectListItem{Text="B Positive"},
+      new SelectListItem{Text="AB Positive"},
+       new SelectListItem{Text="O Positive"},
+         new SelectListItem{Text="A Negative"},
+     new SelectListItem{Text="B Negative"},
+      new SelectListItem{Text="AB Negative"},
+       new SelectListItem{Text="O Negative"}
+    }, "Select BloodGroup", new { @class = "custom-select form-control required" })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tdob"> Date Of Birth: <span class="danger">*</span> </label>
+                                                    @Html.TextBoxFor(model => model.TeacherpDOB, "{0:yyyy-MM-dd}", new { id = "mdate1", @class = "form-control", @required = "required" })
+                                                    @*@Html.EditorFor(model => model.TeacherpDOB, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tjdate">Joined Date :</label>
+                                                    @Html.TextBoxFor(model => model.TeacherJoinedDate, "{0:yyyy-MM-dd}", new { id = "mdate2", @class = "form-control", @required = "required" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 2 -->
+                                    <h6>Contact Details</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Contact Number</label>
+                                                    <div class="controls col-md-9">
+                                                        @Html.TextBoxFor(model => model.TeacherContactNumber, new { @class = "form-control", @required = "required" })                
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Email ID :</label>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(model => model.TeacherEmail, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                        @*<input type="email" class="form-control" id="temail" name="temail" placeholder="sophie@example.com" required data-validation-required-message="This field is required">*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 3 -->
+                                    <h6>Address Details</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="taddress1">Address1 :</label>
+                                                    @Html.EditorFor(model => model.TeacherAddress1, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @*<input type="text" class="form-control" id="taddress1" name="taddress1">*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="taddress2">Address2 :</label>
+                                                    @Html.EditorFor(model => model.TeacherAddress2, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @*<input type="text" class="form-control" id="taddress2" name="taddress2">*@
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tcity">Citty :</label>
+                                                    @Html.EditorFor(model => model.TeacherCity, new { htmlAttributes = new { @class = "form-control required", @required = "required" } })
+                                                    @*<input type="text" class="form-control" id="tcity" name="tcity">*@
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tstate">State :</label>
+                                                    @Html.EditorFor(model => model.TeacherState, new { htmlAttributes = new { @class = "form-control required", @required = "required" } })
+                                                    @*<input type="text" class="form-control" id="tstate" name="tstate">*@
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tpostcode">Post Code :</label>
+                                                    @Html.EditorFor(model => model.TeacherPINcode, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @*<input type="text" class="form-control" id="tpostcode" name="tpostcode">*@
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tcountry">Country :</label>
+                                                    @Html.DropDownListFor(model => model.TeacherCountry, new List<SelectListItem>
+    {
+    new SelectListItem{Text="India"},
+     new SelectListItem{Text="China"},
+      new SelectListItem{Text="Malaysia"},
+       new SelectListItem{Text="Australia"},
+       new SelectListItem{Text="Germany"},
+     new SelectListItem{Text="US"},
+      new SelectListItem{Text="London"},
+       new SelectListItem{Text="Indonesia"}
+    }, "Select Country", new { @class = "custom-select form-control", @required = "required" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 4 -->
+                                    <h6>Qualification & Experience Details</h6>
+                                    <section>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="texperience">Experience year :</label>
+                                                    @Html.EditorFor(model => model.TeacherExperienced, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @*<input type="text" class="form-control required" id="texperience" name="texperience">*@
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tqualification">Qualification</label>
+                                                    @Html.EditorFor(model => model.TeacherQualification, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @*<input type="text" class="form-control required" id="tqualification" name="tqualification">*@
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="texpdescription">Experience Description</label>
+                                                    @Html.TextAreaFor(model => model.TeacherExpDescription, new { @class = "form-control", @rows = 3, @required = "required" })
+                                                    @*@Html.EditorFor(model => model.TeacherExpDescription, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                                    @*<textarea name="texpdescription" id="texpdescription" rows="4" class="form-control"></textarea>*@
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="texpdescription">Modified Description</label>
+                                                    @Html.TextAreaFor(model => model.TeacherModifiedDescription, new { @class = "form-control", @rows = 3, @required = "required" })
+                                                    @*@Html.EditorFor(model => model.TeacherModifiedDescription, new { htmlAttributes = new { @class = "form-control", @required = "required" } })*@
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @*<input type="button" name="Save" id="Save" value="Save" onclick="clickbutton" />*@
+                                                        @*<textarea name="texpdescription" id="texpdescription" rows="4" class="form-control"></textarea>*@
+                                                    </div>
+
+                                                </div>
+                                                <div>
+
+                                                </div>
+
+                                            </div>
+                                    </section>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- vertical wizard -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+        }
+@section Scripts
+{
+    <script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.steps.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.validate.min.js"></script>
+    <!-- Sweet-Alert  -->
+    @*<script src="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.min.js"></script>*@
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/teacher-wizard-edit.js"></script>
+
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script>
+        // MAterial Date picker
+        $('#mdate1').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate2').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+        $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+
+        $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
+        // Clock pickers
+        $('#single-input').clockpicker({
+            placement: 'bottom',
+            align: 'left',
+            autoclose: true,
+            'default': 'now'
+        });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+        }).find('input').change(function () {
+            console.log(this.value);
+        });
+        $('#check-minutes').click(function (e) {
+            // Have to stop propagation here
+            e.stopPropagation();
+            input.clockpicker('show').clockpicker('toggleView', 'minutes');
+        });
+        if (/mobile/i.test(navigator.userAgent)) {
+            $('input').prop('readOnly', true);
+        }
+        // Colorpicker
+        $(".colorpicker").asColorPicker();
+        $(".complex-colorpicker").asColorPicker({
+            mode: 'complex'
+        });
+        $(".gradient-colorpicker").asColorPicker({
+            mode: 'gradient'
+        });
+        // Date Picker
+        jQuery('.mydatepicker, #datepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        jQuery('#date-range').datepicker({
+            toggleActive: true
+        });
+        jQuery('#datepicker-inline').datepicker({
+            todayHighlight: true
+        });
+        // Daterange picker
+        $('.input-daterange-datepicker').daterangepicker({
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse'
+        });
+        $('.input-daterange-timepicker').daterangepicker({
+            timePicker: true,
+            format: 'MM/DD/YYYY h:mm A',
+            timePickerIncrement: 30,
+            timePicker12Hour: true,
+            timePickerSeconds: false,
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse'
+        });
+        $('.input-limit-datepicker').daterangepicker({
+            format: 'MM/DD/YYYY',
+            minDate: '06/01/2015',
+            maxDate: '06/30/2015',
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse',
+            dateLimit: {
+                days: 6
+            }
+        });
+    </script>
+    }
+
+
+
+
+
+
+
+
+
+
+

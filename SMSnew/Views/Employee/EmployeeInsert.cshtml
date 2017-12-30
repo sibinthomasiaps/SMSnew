@@ -1,0 +1,385 @@
+﻿
+
+@model SMSnew.Models.Employee
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@{
+      ViewBag.Title = "EmployeeInsert";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+}
+
+
+<div class="page-wrapper">
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+
+    <div>
+        @using (Html.BeginForm("EmployeeRegistration", "Employee", FormMethod.Post))
+        {
+            
+           
+                <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+                 <link href="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+                 <link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+                 <link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+  
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                <![endif]-->
+            
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body wizard-content">
+                                <h4 class="card-title">Welcome to Employee Registration </h4>
+                                @*//<h6 class="card-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website</a></h6>*@
+                                <form action="#" class="tab-wizard wizard-circle"></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row" id="validatione">
+                    <div class="col-12">
+                        <div class="card wizard-content">
+                            <div class="card-body">
+                                @*<h4 class="card-title">Step wizard with validation</h4>*@
+         
+                                <form action="#" class="validatione-wizard wizard-circle">
+                             
+                                    <h6>Profile Info</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tfirstname"> First Name  </label>
+                                                    <input type="text" class="form-control" id="EmpFirstName" name="EmpFirstName" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tlastname"> Last Name  </label>
+                                                    <input type="text" class=" form-control " id="EmpLastName" name="EmpLastName" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tgender"> Gender  </label>
+                                 
+                                                    <select class=" form-control " id="EmpGender" name="EmpGender" required>
+                                                        <option value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">DOB</label>
+                                                    @Html.TextBoxFor(model => model.EmpDOB, "{0:yyyy-MM-dd}", new { id = "mdate1", @class = "form-control", @required = "required" })
+                                      
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label class="control-label">Employee Status</label>
+                                                    <select class="validate form-control" id="EmpStatus" name="EmpStatus" required>
+                                                        <option value="">Please Select</option>
+                                                        <option value="Regular">Regular</option>
+                                                        <option value="Temporary">Temporary</option>
+                                                        <option value="New">New</option>
+                                                    
+                                                    </select>
+
+                                           
+                                                </div>
+                                                @Html.ActionLink("Back to list", "Employeegrid");
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label"> Blood Group</label>
+                                                    <select class=" form-control " id="EmpBloodGroup" name="EmpBloodGroup"  required>
+                                                        <option value="">Please Select</option>
+                                                        <option value="O positive">O positive</option>
+                                                        <option value="O negative">O negative</option>
+                                                        <option value="A positive">A positive</option>
+                                                        <option value="A negative">A negative</option>
+                                                        <option value="B positive">B positive</option>
+                                                        <option value="B negative">B negative</option>
+                                                        <option value="AB positive">AB positive</option>
+                                                        <option value="AB negative">AB negative</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                  
+                                    <h6>Address Details</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label class="control-label">Address 1</label>
+                                                    <input type="text" class=" form-control " id="EmpAddress1" name="EmpAddress1" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Address 2</label>
+                                                    <input type="text" class=" form-control " id="EmpAddress2" name="EmpAddress2" required>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label"> PIN code</label>
+                                                    <input type="number" class=" form-control " id="EmpPINcode" name="EmpPINcode" required>
+
+                                                </div>
+                                            </div>
+                               
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label"> Country</label>
+                                                    <input type="text" class="form-control" id="EmpCountry" name="EmpCountry" required>
+
+                                                </div>
+                                            </div>
+                          
+                                        </div>
+                     
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Email Address</label>
+                                                    <input type="email" class=" form-control " id="EmpEmail" name="EmpEmail" required>
+
+
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label class="control-label"> State</label>
+                                                    <input type="text" class=" form-control " id="EmpState" name="EmpState" required>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Phone Number</label>
+                                                    <input type="number" class=" form-control " id="EmpPhone" name="EmpPhone" required>
+
+
+                                                </div>
+                                            </div>
+              
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label"> City</label>
+                                                    <input type="text" class=" form-control" id="EmpCity" name="EmpCity" required>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+            
+                                    <h6>Qualification & Experience Details</h6>
+                                    <section>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Experience</label>
+                                                    @Html.DropDownListFor(m => m.EmpExperienced, Enumerable.Range(1, 50).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), "please select", new { @class = "form-control ", @required = "required" })
+                                           
+
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Experience Description</label>
+                                                        <input type="text" class="form-control " id="EmpExpDescription" name="EmpExpDescription" required>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Designation</label>
+                                                    <input type="text" class=" form-control " placeholder="Eg: Accountant, Librarian, technical staff,Lab Asistant" id="EmpDesignation" name="EmpDesignation" required>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Joined Date</label>
+                                                        @Html.TextBoxFor(model => model.EmpJoinedDate, "{0:yyyy-MM-dd}", new { id = "mdate2", @class = "form-control", @required = "required" })
+                                                        </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    
+                                                </div>
+
+                                            </div>
+                                            <div>
+
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+ 
+   
+            <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+            <script src="@Url.Content("~/Content/template/")assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+            <script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+            <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.steps.min.js"></script>
+            <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.validate.min.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/empreg.js"></script>
+
+            <script src="@Url.Content("~/Content/template/")assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+          
+        }
+
+    </div>
+ 
+    <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+   
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery.validate.min.js"></script>*@
+@*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+<script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js" type="text/javascript"></script>
+<script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>

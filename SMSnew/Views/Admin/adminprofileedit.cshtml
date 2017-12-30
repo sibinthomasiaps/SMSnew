@@ -1,0 +1,474 @@
+﻿@model SMSnew.Models.Admin
+@{
+    ViewBag.Title = "adminprofileedit";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <div>
+        @using (Html.BeginForm("adminprofile0", "Admin", FormMethod.Post))
+            {
+            <head>
+                <!-- Bootstrap Core CSS -->
+                <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+                <!--alerts CSS -->
+                <link href="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+                <!-- Custom CSS -->
+                <link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+                <!-- You can change the theme colors from here -->
+                <link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                <![endif]-->
+            </head>
+
+                <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body wizard-content">
+                                    <h4 class="card-title">Welcome to Admin Registeration </h4>
+                                    @*//<h6 class="card-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website</a></h6>*@
+                                    <form action="#" class="tab-wizard wizard-circle"></form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Validation wizard -->
+                    <div class="row" id="validation">
+                        <div class="col-12">
+                            <div class="card wizard-content">
+                                <div class="card-body">
+                                    <h4 class="card-title">Step wizard with validation</h4>
+                                   
+                                    @*<h6 class="card-subtitle">You can us the validation like what we did</h6>*@
+                                    <form action="#" class="validation-wizard wizard-circle">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.AdminId)
+                                        <!-- Step 1 -->
+                                        <h6>Profile Info</h6>
+                                        <section>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="wfirstName2"> First Name : <span class="danger">*</span> </label>
+                                                        @Html.EditorFor(model => model.AdminFullname, new { htmlAttributes = new { id = "AdminFullname",  @class = "form-control required" } })
+                                                        @Html.ValidationMessageFor(model => model.AdminFullname, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="wfirstName2"> Department : <span class="danger">*</span> </label>
+                                                       @Html.EditorFor(model => model.Department, new { htmlAttributes = new {id= "Department", @class = "form-control required" } })
+                                                    @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="wemailAddress2"> Gender : <span class="danger">*</span> </label>
+                                                        <div class="col-md-9">
+
+                                                        
+
+                                                          @*@if (Model.Gender == Model.Gender)*@
+                                             @if (Model.Gender == "male")
+                                                                  {
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio" value="Female" class="custom-control-input">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description" name="Gender">Female</span>
+                                                            </label>
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio" checked=""  class="custom-control-input" value="Male">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Male</span>
+                                                            </label>
+                                                            @*@Html.RadioButtonFor(model => model.Gender, "Male", new { @checked = true })
+                                                            @Html.Label("Male")
+                                                            @Html.RadioButtonFor(model => model.Gender, "Female")
+                                                            @Html.Label("Female")*@
+                                                          }
+                                                          else
+                                                          {
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio" checked=""  value="Female" class="custom-control-input">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description" name="Gender">Female</span>
+                                                            </label>
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio"  class="custom-control-input" value="Male">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Male</span>
+                                                            </label>
+                                                            @*@Html.RadioButtonFor(model => model.Gender, "Male")
+                                                            @Html.Label("Male")
+                                                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @checked = true })
+                                                            @Html.Label("Female")*@
+                                                          }
+                                                            
+                                                            @*<label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio" checked="" value="Female" class="custom-control-input">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description" name="Gender">Female</span>
+                                                            </label>
+                                                            <label class="custom-control custom-radio">
+                                                                <input id="Gender" name="Gender" type="radio" class="custom-control-input" value="Male">
+
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Male</span>
+                                                            </label>*@
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="wdate2">Joining Date :</label>
+                                                      
+                                                        @Html.TextBoxFor(model => model.JoiningDate, "{0:yyyy-MM-dd}", new { id = "JoiningDate", @class = "form-control required" })
+                                                        
+                                                        @Html.ValidationMessageFor(model => model.JoiningDate, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @*<label for="wdate2">Grade :</label>
+                                                            <input type="text" class="form-control" id="wdate2">*@
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
+
+                                        <!-- Step 2 -->
+                                        <h6>Contact Details</h6>
+                                        <section>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Address 1</label>
+                                                        <div class="col-md-9">
+                                                         
+                                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control required", id= "Address" } })
+                                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Address 2</label>
+                                                        <div class="col-md-9">
+                                                            
+                                                            @Html.EditorFor(model => model.Address1, new { htmlAttributes = new {  id= "Address1", @class = "form-control requiredl" } })
+                                                            @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">City</label>
+                                                        <div class="col-md-9">
+
+                                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new {id= "City", @class = "form-control required" } })
+                                                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">State</label>
+                                                        <div class="col-md-9">
+
+                                                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { id= "State", @class = "form-control requiredl" } })
+                                                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Post Code</label>
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.PINcode, new { htmlAttributes = new {id= "PINcode", @class = "form-control required" } })
+                                                            @Html.ValidationMessageFor(model => model.PINcode, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Country</label>
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new {id= "Country", @class = "form-control required" } })
+                                                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Contact Number</label>
+                                                        <div class="col-md-9">
+                                                            @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new {id= "ContactNumber", @class = "form-control required" } })
+                                                            @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                        </section>
+                                        <!-- Step 4 -->
+                                        <h6>Experience & Qualification</h6>
+                                        <section>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="behName1">Experience year :</label>
+
+                                                        @Html.EditorFor(model => model.TotalExperience, new { htmlAttributes = new { id= "TotalExperience", @class = "form-control requiredl" } })
+                                                        @Html.ValidationMessageFor(model => model.TotalExperience, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="behName1">Qualification :</label>
+
+                                                        @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new {id= "Qualification", @class = "form-control required" } })
+                                                        @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                                     
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="decisions1">Experience Description</label>
+                                                        @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new { id = "ExperienceInfo", @class = "form-control required" } })
+                                                        @*@Html.EditorFor(model => model.TotalExperience, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                        @Html.ValidationMessageFor(model => model.ExperienceInfo, "", new { @class = "text-danger" })
+                                                       
+                                                        <input type="button" name="Save" id="Save" value="Save" onclick="clickbutton" />
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- vertical wizard -->
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <div class="right-sidebar">
+                        <div class="slimscrollright">
+                            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                            <div class="r-panel-body">
+                                <ul id="themecolors" class="m-t-20">
+                                    <li><b>With Light sidebar</b></li>
+                                    <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                    <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                    <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                                </ul>
+                                <ul class="m-t-20 chatonline">
+                                    <li><b>Chat option</b></li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+                </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+
+
+     <!-- All Jquery -->
+    <!-- ============================================================== -->
+                <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+                <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+
+                <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+                <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+                <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+    <!--Menu sidebar -->
+                <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+                <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+                <script src="@Url.Content("~/Content/template/")assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+                <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+                <script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+                <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.steps.min.js"></script>
+                <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.validate.min.js"></script>
+    <!-- Sweet-Alert  -->
+                <script src="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.min.js"></script>
+                <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+                <script src="@Url.Content("~/Content/template/")assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+
+            $("#Save").click(function () {
+                //alert($('#wfirstName2').val());
+
+                var fname = $('#AdminFullname').val();
+                var Department = $('#Department').val();
+                var JoiningDate = $('#JoiningDate').val();
+                var Address = $('#Address').val();
+                var Address1 = $('#Address1').val();
+                var City = $('#City').val();
+                var State = $('#State').val();
+                var PINcode = $('#PINcode').val();
+                var Country = $('#Country').val();
+                var ContactNumber = $('#ContactNumber').val();
+                var TotalExperience = $('#TotalExperience').val();
+                var Qualification = $('#Qualification').val();
+                var ExperienceInfo = $('#ExperienceInfo').val();
+               // var val = $("#Gender:checked").val();
+
+                var val = $('input:radio[name="Gender"]:checked').val();
+
+
+
+                window.location = "adminprofileedit1?fname=" + fname + "&Department=" + Department + "&JoiningDate=" + JoiningDate + "&Department=" + Department + "&Address=" + Address + "&Address1=" + Address1 + "&City=" + City + "&State=" + State + "&PINcode=" + PINcode + "&Country=" + Country + "&ContactNumber=" + ContactNumber + "&TotalExperience=" + TotalExperience + "&Qualification=" + Qualification + "&Department=" + Department + "&ExperienceInfo=" + ExperienceInfo + "&PINcode=" + PINcode + "&Gender=" + val;
+                    //"&TeacherLastName=" + wlastName2;
+
+            });
+        });
+                </script>
+
+        }
+
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->

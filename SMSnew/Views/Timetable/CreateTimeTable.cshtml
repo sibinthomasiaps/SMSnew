@@ -1,0 +1,532 @@
+﻿@model SMSnew.Models.Timetable
+
+@{
+    ViewBag.Title = "CreateTimeTable";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@section Styles
+{
+    <title>Timetable</title>
+    <style type="text/css">
+        body {
+            font-family: arial;
+        }
+
+        th, td {
+            margin: 0;
+            text-align: center;
+            border-collapse: collapse;
+            //outline: 1px solid #e3e3e3;
+            outline: 1px solid #e3e3e3;
+        }
+
+        td {
+            padding: 5px 10px;
+        }
+
+        th {
+            //background: #e3e3e3;
+             background: #666;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        td:hover {
+            cursor: pointer;
+            background: #666;
+            color: white;
+        }
+    </style>
+    }
+
+        @using (Html.BeginForm())
+        {
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">TimeTable</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <h3 class="card-title">Create TimeTable</h3>
+                                        <hr>
+                                        <div class="row p-t-20">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @*@Html.LabelFor(model => model.SubjectClass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                                    <label class="control-label">Class</label>
+                                                    @Html.DropDownListFor(model => model.ttClass, ViewBag.classname as SelectList, "---Select Class---", new { @class = "form-control", @required = "required" })
+
+                                                    @*@Html.DropDownListFor(model => model.SubAlClass, ViewBag.classname as SelectList, "---Select Class---", new { @class = "form-control" })*@
+                                                    @Html.ValidationMessageFor(model => model.ttClass, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    @*@Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                                    <label class="control-label">Division</label>
+                                                    @Html.DropDownListFor(model => model.ttDivision, new SelectList(""), "-Select Div-", new { id = "Ddldivision", @class = "form-control", @required="required" })
+                                                    @*@Html.DropDownList("ttDivision", ViewBag.division as SelectList, "-Select Division-", new { @class = "form-control" })*@
+                                                    @*@Html.DropDownListFor(model => model.SubAlDivision, new SelectList(""), "-Select Div-", new { id = "Ddldivision", @class = "form-control" })*@
+                                                    @*@Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.ttDivision, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <table width="100%" align="center">
+                                            <div id="head_nav">
+                                                <tr>
+                                                    <th>Time</th>
+                                                    <th>Monday</th>
+                                                    <th>Tuesday</th>
+                                                    <th>Wednesday</th>
+                                                    <th>Thrusday</th>
+                                                    <th>Friday</th>
+                                                    <th>Saturday</th>
+                                                </tr>
+                                            </div>
+
+                                            <tr>
+                                                <th>09:00 - 09:45</th>
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_1, new SelectList(""), "-Select-", new { id = "MonSubject_1", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_1, new SelectList(""), "-Select-", new { id = "TueSubject_1", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_1, new SelectList(""), "-Select-", new { id = "WedSubject_1", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_1, new SelectList(""), "-Select-", new { id = "ThuSubject_1", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_1, new SelectList(""), "-Select-", new { id = "FriSubject_1", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_1, new SelectList(""), "-Select-", new { id = "SatSubject_1", @class = "form-control" })</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>09:45 - 10:50</th>
+
+
+                                                @*<td>@Html.DropDownList("MonSubject_2", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_2, new SelectList(""), "-Select-", new { id = "MonSubject_2", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_2, new SelectList(""), "-Select-", new { id = "TueSubject_2", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_2, new SelectList(""), "-Select-", new { id = "WedSubject_2", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_2, new SelectList(""), "-Select-", new { id = "ThuSubject_2", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_2, new SelectList(""), "-Select-", new { id = "FriSubject_2", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_2, new SelectList(""), "-Select-", new { id = "SatSubject_2", @class = "form-control" })</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Break</th>
+
+                                                <th></th>
+                                                <th></th>
+                                                <th>Break</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+
+                                            </tr>
+                                            <tr>
+                                                <th>11-00 - 11:45</th>
+
+                                                @*<td>@Html.DropDownList("MonSubject_3", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_3, new SelectList(""), "-Select-", new { id = "MonSubject_3", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_3, new SelectList(""), "-Select-", new { id = "TueSubject_3", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_3, new SelectList(""), "-Select-", new { id = "WedSubject_3", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_3, new SelectList(""), "-Select-", new { id = "ThuSubject_3", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_3, new SelectList(""), "-Select-", new { id = "FriSubject_3", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_3, new SelectList(""), "-Select-", new { id = "SatSubject_3", @class = "form-control" })</td>
+
+
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>11:45 - 12:30</th>
+
+                                                @*<td>@Html.DropDownList("MonSubject_4", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_4, new SelectList(""), "-Select-", new { id = "MonSubject_4", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_4, new SelectList(""), "-Select-", new { id = "TueSubject_4", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_4, new SelectList(""), "-Select-", new { id = "WedSubject_4", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_4, new SelectList(""), "-Select-", new { id = "ThuSubject_4", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_4, new SelectList(""), "-Select-", new { id = "FriSubject_4", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_4, new SelectList(""), "-Select-", new { id = "SatSubject_4", @class = "form-control" })</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Break</th>
+
+
+                                                <th></th>
+                                                <th></th>
+                                                <th> Lunch Break</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <th>01:00 - 01:45</th>
+
+                                                @*<td>@Html.DropDownList("MonSubject_5", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_5, new SelectList(""), "-Select-", new { id = "MonSubject_5", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_5, new SelectList(""), "-Select-", new { id = "TueSubject_5", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_5, new SelectList(""), "-Select-", new { id = "WedSubject_5", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_5, new SelectList(""), "-Select-", new { id = "ThuSubject_5", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_5, new SelectList(""), "-Select-", new { id = "FriSubject_5", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_5, new SelectList(""), "-Select-", new { id = "SatSubject_5", @class = "form-control" })</td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>01:45 - 02:50</th>
+
+                                                @*<td>@Html.DropDownList("MonSubject_6", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_6, new SelectList(""), "-Select-", new { id = "MonSubject_6", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_6, new SelectList(""), "-Select-", new { id = "TueSubject_6", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_6, new SelectList(""), "-Select-", new { id = "WedSubject_6", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_6, new SelectList(""), "-Select-", new { id = "ThuSubject_6", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_6, new SelectList(""), "-Select-", new { id = "FriSubject_6", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_6, new SelectList(""), "-Select-", new { id = "SatSubject_6", @class = "form-control" })</td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>Break</th>
+
+                                                <th></th>
+                                                <th></th>
+                                                <th> Break</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+
+                                            </tr>
+                                            <tr>
+                                                <th>03:00 - 03:45</th>
+
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_7, new SelectList(""), "-Select-", new { id = "MonSubject_7", @class = "form-control" })</td>
+                                                @*<td>@Html.DropDownList("MonSubject_7", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_7, new SelectList(""), "-Select-", new { id = "TueSubject_7", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_7, new SelectList(""), "-Select-", new { id = "WedSubject_7", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_7, new SelectList(""), "-Select-", new { id = "ThuSubject_7", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_7, new SelectList(""), "-Select-", new { id = "FriSubject_7", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_7, new SelectList(""), "-Select-", new { id = "SatSubject_7", @class = "form-control" })</td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>03:45 - 04:30</th>
+
+                                                @*<td>@Html.DropDownList("MonSubject_8", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.MonSubject_8, new SelectList(""), "-Select-", new { id = "MonSubject_8", @class = "form-control" })</td>
+                                                @*<td>@Html.DropDownList("MonSubject_7", ViewBag.subject as SelectList, "-Select Subject-")</td>*@
+                                                <td>@Html.DropDownListFor(model => model.TueSubject_8, new SelectList(""), "-Select-", new { id = "TueSubject_8", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.WedSubject_8, new SelectList(""), "-Select-", new { id = "WedSubject_8", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.ThuSubject_8, new SelectList(""), "-Select-", new { id = "ThuSubject_8", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.FriSubject_8, new SelectList(""), "-Select-", new { id = "FriSubject_8", @class = "form-control" })</td>
+                                                <td>@Html.DropDownListFor(model => model.SatSubject_8, new SelectList(""), "-Select-", new { id = "SatSubject_8", @class = "form-control" })</td>
+
+                                            </tr>
+
+
+                                            @*<tr>
+                                                <th>Submit</th>
+
+                                                <th></th>
+                                                <th></th>
+                                                <th><input type="submit" value="Submit" class="btn btn-default" name="Create" /></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+
+                                                @*<td><input type="submit" value="CreateMON" class="btn btn-default" name="Create"/></td>
+                <td><input type="submit" value="CreateTUE" class="btn btn-default" name="Create" /></td>
+                <td><input type="submit" value="CreateWED" class="btn btn-default" name="Create" /></td>
+                <td><input type="submit" value="CreateTHUR" class="btn btn-default"name="Create" /></td>
+                <td><input type="submit" value="CreateFRI" class="btn btn-default" name="Create" /></td>
+                <td><input type="submit" value="CreateSAT" class="btn btn-default" name="Create" /></td>*@
+
+
+                                            
+                                        </table>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-success" id="submit"> <i class="fa fa-check"></i> Save</button>
+                                            <button type="button" class="btn btn-inverse">Cancel</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Back to List", "DetailsSubjectAlList")
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+        }
+  @section Scripts
+{
+        <script>
+            $(document).ready(function () {
+                $("#Ddldivision").change(function () {
+                    $.get("/Timetable/CheckTimetable", { ttClass: $("#ttClass").val(), Ddldivision: $("#Ddldivision").val() }, function (datamsg) {
+                        var msg = datamsg.Success;
+                        if (msg == "False")
+                        {
+                            document.getElementById("submit").disabled = true;
+                            alert(datamsg.Message);
+                        }
+                        else {
+                            document.getElementById("submit").disabled = false;
+                            alert(datamsg.Message);
+                        }
+                          
+                           
+                    });
+                });
+            });
+            
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#ttClass").change(function () {
+                    $.get("/Timetable/GetDivisionList", { ttClass: $("#ttClass").val() }, function (data1) {
+                        // $("#SubjectClass").empty();
+                        $("#Ddldivision").empty();
+                        $("#Ddldivision").append("<option>" + "Select Division" + "</option>")
+                        $.each(data1, function (index, row) {
+                            $("#Ddldivision").append("<option Text ='" + row.ClassRoomDivision + "'>" + row.ClassRoomDivision + "</option>")
+                        
+                    $("#SubjectClass").empty();
+                    $.get("/Timetable/GetSubjectList", { ttClass: $("#ttClass").val() }, function (data) {
+                        // $("#SubjectClass").empty();
+                        $("#MonSubject_1").empty();
+                        $("#MonSubject_2").empty();
+                        $("#MonSubject_3").empty();
+                        $("#MonSubject_4").empty();
+                        $("#MonSubject_5").empty();
+                        $("#MonSubject_6").empty();
+                        $("#MonSubject_7").empty();
+                        $("#MonSubject_8").empty();
+                        $("#TueSubject_1").empty();
+                        $("#TueSubject_2").empty();
+                        $("#TueSubject_3").empty();
+                        $("#TueSubject_4").empty();
+                        $("#TueSubject_5").empty();
+                        $("#TueSubject_6").empty();
+                        $("#TueSubject_7").empty();
+                        $("#TueSubject_8").empty();
+                        $("#WedSubject_1").empty();
+                        $("#WedSubject_2").empty();
+                        $("#WedSubject_3").empty();
+                        $("#WedSubject_4").empty();
+                        $("#WedSubject_5").empty();
+                        $("#WedSubject_6").empty();
+                        $("#WedSubject_7").empty();
+                        $("#WedSubject_8").empty();
+                        $("#ThuSubject_1").empty();
+                        $("#ThuSubject_2").empty();
+                        $("#ThuSubject_3").empty();
+                        $("#ThuSubject_4").empty();
+                        $("#ThuSubject_5").empty();
+                        $("#ThuSubject_6").empty();
+                        $("#ThuSubject_7").empty();
+                        $("#ThuSubject_8").empty();
+                        $("#FriSubject_1").empty();
+                        $("#FriSubject_2").empty();
+                        $("#FriSubject_3").empty();
+                        $("#FriSubject_4").empty();
+                        $("#FriSubject_5").empty();
+                        $("#FriSubject_6").empty();
+                        $("#FriSubject_7").empty();
+                        $("#FriSubject_8").empty();
+                        $("#SatSubject_1").empty();
+                        $("#SatSubject_2").empty();
+                        $("#SatSubject_3").empty();
+                        $("#SatSubject_4").empty();
+                        $("#SatSubject_5").empty();
+                        $("#SatSubject_6").empty();
+                        $("#SatSubject_7").empty();
+                        $("#SatSubject_8").empty();
+                        $("#MonSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#MonSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#TueSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#WedSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#ThuSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#FriSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_1").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_2").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_3").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_4").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_5").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_6").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_7").append("<option>" + "Select Subject" + "</option>")
+                        $("#SatSubject_8").append("<option>" + "Select Subject" + "</option>")
+                        $.each(data, function (index, row) {
+                            $("#MonSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#MonSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#TueSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#WedSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#ThuSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#FriSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_1").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_2").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_3").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_4").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_5").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_6").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_7").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                            $("#SatSubject_8").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                        });
+                    });
+
+                        });
+                    });
+                })
+            });
+        </script>
+        }
+
+
+  

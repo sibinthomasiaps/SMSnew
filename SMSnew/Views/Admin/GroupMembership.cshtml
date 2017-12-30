@@ -1,0 +1,137 @@
+﻿
+ @model SMSnew.Models.Group
+@{
+    ViewBag.Title = "GroupMembership";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+    <!-- ============================================================== -->
+
+
+
+  <!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <div>
+     
+        <body>
+           
+            @using (Html.BeginForm())
+            {
+                <div class="container-fluid">
+
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="card">
+
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Security Group</h4>
+                                    @*<h6 class="card-subtitle">Just add <code>col*</code> class to form-group</h6>*@
+                                    <form class="form-material m-t-40 row" action="@Url.Action("GroupMembership", "Group")">
+                                        <div class="form-group col-md-6 m-t-20">
+                                            <input type="text" class="form-control form-control-line" placeholder="Name " name="GroupName" id="GroupName">
+                                        </div>
+                                        <div class="form-group col-md-6 m-t-20">
+                                            <input type="text" id="GroupDescription" name="GroupDescription" class="form-control" placeholder="Description">
+
+                                        </div>
+
+
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button type="submit" class="btn btn-success">Submit</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ============================================================== -->
+                    <!-- End Page Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+
+
+
+
+
+
+
+                </div>
+            }
+        </body>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+
+
+
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+
+
+
+
+

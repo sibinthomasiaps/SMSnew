@@ -1,0 +1,99 @@
+﻿
+           @model IEnumerable<SMSnew.Models.LibraryBookAvailability>
+@{
+    ViewBag.Title = "bk_reg";
+    Layout = "~/Views/Shared/_sampleLayout.cshtml";
+}
+
+
+
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+
+    <link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+
+
+        @using (Html.BeginForm())
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Library Book</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                               
+                                        <hr>
+                                        <div class="row p-t-20">
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Category</label>
+                                                        @Html.DropDownList("LibraryBookCatagoryid", ViewBag.category as SelectList, "Please select", new { @class = "form-control", @required = "required" })
+
+                                                     </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Title</label>
+                                                    <input type="text" class="form-control" id="LibraryBookTitle" name="LibraryBookTitle" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Author</label>
+                                                    <input type="text" class="form-control"  id="LibraryBookAuthor" name="LibraryBookAuthor"  required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Cost</label>
+                                                    <input type="number" class="form-control"  id="LibraryBookCost" name="LibraryBookCost" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Publisher</label>
+                                                    <input type="text" class="form-control" id="LibraryBookPublisher" name="LibraryBookPublisher" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book No</label>
+                                                    <input type="number" class="form-control" id="LibraryBookNo" name="LibraryBookNo" required>
+                                                </div>
+                                            </div>
+                                         
+                                        </div>
+                                       
+                                       
+                               
+                                        <div class="form-actions">
+                                            <button class="btn btn-info waves-effect waves-light" type="submit" id="save" name="save" style="background-color: #0c4e90;border: 1px solid #0c4e90;color:#ffffff;"><span class="btn-label"><i class="fa fa-check"></i></span>save</button>
+                                                   </div>
+                                    </div>
+                                    @Html.ActionLink("Go To List", "bk_details")
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+            
+            @section Scripts
+{
+}
+

@@ -1,0 +1,852 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/Content/template/")assets/images/favicon.png">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- page CSS -->
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+    <!--alerts CSS -->
+    <link href="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    @RenderSection("Styles", required: false)
+   
+
+</head>
+
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index-2.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="@Url.Content("~/Content/template/")assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="@Url.Content("~/Content/template/")assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                            <!-- dark Logo text -->
+                            <img src="@Url.Content("~/Content/template/")assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <img src="@Url.Content("~/Content/template/")assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        </span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Comment -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-message"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox scale-up-left">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">Notifications</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Luanch Admin</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle"><i class="ti-calendar"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Event today</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Settings</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Comment -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-email"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox scale-up-left" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">You have 4 new messages</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="@Url.Content("~/Content/template/")assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="@Url.Content("~/Content/template/")assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="@Url.Content("~/Content/template/")assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown mega-dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
+                            <div class="dropdown-menu scale-up-left">
+                                <ul class="mega-dropdown-menu row">
+                                    <li class="col-lg-3 col-xlg-2 m-b-30">
+                                        <h4 class="m-b-20">CAROUSEL</h4>
+                                        <!-- CAROUSEL -->
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <div class="container"> <img class="d-block img-fluid" src="@Url.Content("~/Content/template/")assets/images/big/img1.jpg" alt="First slide"></div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="container"><img class="d-block img-fluid" src="@Url.Content("~/Content/template/")assets/images/big/img2.jpg" alt="Second slide"></div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="container"><img class="d-block img-fluid" src="@Url.Content("~/Content/template/")assets/images/big/img3.jpg" alt="Third slide"></div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                                        </div>
+                                        <!-- End CAROUSEL -->
+                                    </li>
+                                    <li class="col-lg-3 m-b-30">
+                                        <h4 class="m-b-20">ACCORDION</h4>
+                                        <!-- Accordian -->
+                                        <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            Collapsible Group Item #1
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingTwo">
+                                                    <h5 class="mb-0">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                            Collapsible Group Item #2
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingThree">
+                                                    <h5 class="mb-0">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                            Collapsible Group Item #3
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-lg-3  m-b-30">
+                                        <h4 class="m-b-20">CONTACT US</h4>
+                                        <!-- Contact -->
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                        </form>
+                                    </li>
+                                    <li class="col-lg-3 col-xlg-4 m-b-30">
+                                        <h4 class="m-b-20">List style</h4>
+                                        <!-- List style -->
+                                        <ul class="list-style-none">
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-sm-down search-box">
+                            <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </li>
+
+                        <!-- ============================================================== -->
+                        <!-- Language -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>Steave Jobs</h4>
+                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile">
+                    <!-- User profile image -->
+                    <div class="profile-img">
+                        <img src="@Url.Content("~/Content/template/")assets/images/users/profile.png" alt="user" />
+                        <!-- this is blinking heartbit-->
+                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
+                    </div>
+                    <!-- User profile text-->
+                    <div class="profile-text">
+                        <h5>Markarn Doe</h5>
+                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
+                        <a href="~/login/logout" class="" data-toggle="tooltip" title="" onclick="disableBackButtonAllBrowsers"><i class="mdi mdi-power"></i></a>
+                        <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                        <a href="~/login/logout" class="" data-toggle="tooltip" title="Logout" onclick="disableBackButtonAllBrowsers"><i class="mdi mdi-power"></i></a>
+                        <div class="dropdown-menu animated flipInY">
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <!-- text-->
+                            <a href="~/ProfileImage/EditImageProfile" class="dropdown-item"><i class="ti-user"></i> Edit ProfilePic</a>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i> Remove ProfilePic</a>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                            <!-- text-->
+                            <div class="dropdown-divider"></div>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                            <!-- text-->
+                            <div class="dropdown-divider"></div>
+                            <!-- text-->
+                            <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            <!-- text-->
+                        </div>
+                    </div>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">PERSONAL</li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                            @*<ul aria-expanded="false" class="collapse">
+                                    <li><a href="index-2.html">Minimal </a></li>
+                                    <li><a href="index2.html">Analytical</a></li>
+                                    <li><a href="index3.html">Demographical</a></li>
+                                    <li><a href="index4.html">Modern</a></li>
+                                </ul>*@
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-gear"></i><span class="hide-menu">Settings</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="institutionprofile">Institution Details</a></li>
+                                <li><a href="academaicyr">Academic Details</a></li>
+                                <li><a href="GroupMembership">Group Membership</a></li>
+                                <li><a href="#">Change Password</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-group"></i><span class="hide-menu">Academic</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Subject</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="CreateSubjectAllocation">Assign Subject</a></li>
+                                        <li><a href="DetailsSubjectAlList">View Subject</a></li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Class</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="../ClassRoom/CreateClassRoom">Assign Class</a></li>
+                                        <li><a href="DetailsClassRoomList">View Class</a></li>
+                                    </ul>
+
+                                </li>
+                                <li><a href="app-email-detail.html">Lession Planning</a></li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Teacher Allocation</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="CreateTeacherAllocation">Assign Teacher</a></li>
+                                        <li><a href="DetailsTeacherAllocationList">View Teacher</a></li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Time Table</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="CreateTimeTable">Set Time Table</a></li>
+                                        <li><a href="EditTimeTable">Time Table Edit</a></li>
+
+                                        <li><a href="app-email-detail.html">Set Batch Time Table</a></li>
+                                        <li><a href="app-email-detail.html">View Teacher Time Table</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Holiday</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="Holidayregi">Set Holiday</a></li>
+                                        <li><a href="Holidaygrid">View Holiday</a></li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Exam</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="CreateExam">Add Exam </a></li>
+                                <li><a href="listexam">View Exam</a></li>
+                                <li><a href="ui-user-card.html">Set Exam Time Table</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Student Management</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="studentsreg">Add Student</a></li>
+                                <li><a href="DetailsStudentList">Student List</a></li>
+
+                                <li><a href="Attendancesearch">Student Attendence</a></li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Performance</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="exammarkcreate">Add Mark List</a></li>
+                                        <li><a href="listexammarks">View Mark</a></li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Leave Application</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="CreateStudentLeave">Add Leave</a></li>
+                                        <li><a href="ListStudentLeave">View Leave</a></li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Certificate</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="StudentTcDataInsertion">Add Tc</a></li>
+                                        <li><a href="StudentTcDataView">View Tc</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Event</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="CreateEvent"> Add Event </a></li>
+
+                                <li><a href="IndexEvent"> View Event </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">HR/Payroll</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Employee Management</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="CreateTeacher">Add Teacher</a></li>
+                                        <li><a href="employeereg">Add Employee</a></li>
+                                        <li><a href="Employeegrid">Employee List</a></li>
+                                        <li><a href="DetailsTeacherList">Teacher List</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Pay Roll</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="Salary">Pay Head</a></li>
+                                        <li><a href="Salarygrid">View Salary</a></li>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Leave Management</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="layout-single-column.html">Leave Application</a></li>
+                                <li><a href="layout-fix-header.html">Leave Approvals</a></li>
+                                <li><a href="layout-fix-sidebar.html">Leave Details</a></li>
+                                <li>
+                                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">Attendence</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="ui-user-card.html">Attendence</a></li>
+
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Assignments & Notes</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="createassignment">Add Notes</a></li>
+                                <li><a href="listassignment">View Note</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Library Management</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="../Library/catg_reg">Add Category</a></li>
+                                <li><a href="../Library/bk_reg">Book Category</a></li>
+                                <li><a href="../Library/bk_details">Book category Details</a></li>
+                                <li><a href="../Library/book_reg">Add Book</a></li>
+                                <li><a href="../Library/book_details">Book Details</a></li>
+                                <li><a href="../Library/mvmnt_book">Book Issue</a></li>
+                                <li><a href="../Library/mvmt_detail">Issue Details</a></li>
+                                <li><a href="../Library/return_book">Return Book</a></li>
+                                <li><a href="../Library/return_details">Return Details</a></li>
+                                <li><a href="../Library/request_book">Request Book</a></li>
+                                <li><a href="../Library/request_details">Request Details</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-cab"></i><span class="hide-menu">Transport</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="icon-material.html">Add Vehicle</a></li>
+                                <li><a href="icon-material.html">Add Route</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="Holidayregi" aria-expanded="false"><i class="mdi mdi-home-variant"></i><span class="hide-menu">Hostel</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="map-google.html">Add Hostel</a></li>
+                                <li><a href="map-vector.html">Add Hostel Student</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-currency-inr"></i><span class="hide-menu">Fee</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="map-google.html">Payment</a></li>
+                                <li><a href="map-google.html">View Payment Details</a></li>
+                                <li><a href="map-google.html">Due Details</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Guardian</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="parentreg">Registration</a></li>
+                                <li><a href="map-vector.html">View</a></li>
+                            </ul>
+                        </li>
+                        @*<li>
+                                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Parent Registration</span></a>
+                                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="map-google.html">Google Maps</a></li>
+                                <li><a href="map-vector.html">Vector Maps</a></li>
+                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Salary</span></a>
+                                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="map-google.html">Google Maps</a></li>
+                                <li><a href="map-vector.html">Vector Maps</a></li>
+                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Student</span></a>
+                                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="map-google.html">Student Tc</a></li>
+
+                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Subject</span></a>
+                                           <ul aria-expanded="false" class="collapse">
+                                                 <li><a href="map-google.html">Subject Allocation</a></li>
+                                               <li><a href="map-vector.html">Teacher Allocation</a></li>
+                                          </ul>
+                                        </li>*@
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">DashBoard</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">Forms</li>
+                        <li class="breadcrumb-item active">DashBoard</li>
+                    </ol>
+                </div>
+                <div class="">
+                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            @RenderBody()
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+        <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/popper.min.js"></script>
+
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="@Url.Content("~/Content/template/")js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("~/Content/template/")js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("~/Content/template/")js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/switchery/dist/switchery.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/template/")assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            $('.js-switch').each(function () {
+                new Switchery($(this)[0], $(this).data());
+            });
+            // For select 2
+            $(".select2").select2();
+            $('.selectpicker').selectpicker();
+            //Bootstrap-TouchSpin
+            $(".vertical-spin").TouchSpin({
+                verticalbuttons: true,
+                verticalupclass: 'ti-plus',
+                verticaldownclass: 'ti-minus'
+            });
+            var vspinTrue = $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+            });
+            if (vspinTrue) {
+                $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
+            }
+            $("input[name='tch1']").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%'
+            });
+            $("input[name='tch2']").TouchSpin({
+                min: -1000000000,
+                max: 1000000000,
+                stepinterval: 50,
+                maxboostedstep: 10000000,
+                prefix: '$'
+            });
+            $("input[name='tch3']").TouchSpin();
+            $("input[name='tch3_22']").TouchSpin({
+                initval: 40
+            });
+            $("input[name='tch5']").TouchSpin({
+                prefix: "pre",
+                postfix: "post"
+            });
+            // For multiselect
+            $('#pre-selected-options').multiSelect();
+            $('#optgroup').multiSelect({
+                selectableOptgroup: true
+            });
+            $('#public-methods').multiSelect();
+            $('#select-all').click(function () {
+                $('#public-methods').multiSelect('select_all');
+                return false;
+            });
+            $('#deselect-all').click(function () {
+                $('#public-methods').multiSelect('deselect_all');
+                return false;
+            });
+            $('#refresh').on('click', function () {
+                $('#public-methods').multiSelect('refresh');
+                return false;
+            });
+            $('#add-option').on('click', function () {
+                $('#public-methods').multiSelect('addOption', {
+                    value: 42,
+                    text: 'test 42',
+                    index: 0
+                });
+                return false;
+            });
+            $(".ajax").select2({
+                ajax: {
+                    url: "https://api.github.com/search/repositories",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function (data, params) {
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                        params.page = params.page || 1;
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function (markup) {
+                    return markup;
+                }, // let our custom formatter work
+                minimumInputLength: 1,
+                templateResult: formatRepo, // omitted for brevity, see the source of this page
+                templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+            });
+        });
+    </script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+     @RenderSection("scripts")
+</body>
+
+</html>

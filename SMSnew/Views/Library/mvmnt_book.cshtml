@@ -1,0 +1,414 @@
+﻿
+@model SMSnew.Models.LibraryBookIssue
+@{
+    ViewBag.Title = "Library Book";
+    Layout = "~/Views/Shared/_sampleLayout.cshtml";
+   
+}
+@section Styles
+{
+
+
+
+
+
+<link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+<link href="@Url.Content("~/Content/template/")css/style.css" rel="stylesheet">
+
+<link href="@Url.Content("~/Content/template/")css/colors/blue.css" id="theme" rel="stylesheet">
+
+
+
+
+
+
+}
+
+
+
+
+   
+    @using (Html.BeginForm("mvmnt_book", "Library", FormMethod.Post))
+    {
+
+
+
+        <div class="container-fluid">
+         
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">Library Book</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="#">
+                                <div class="form-body">
+                                    <br />
+                                    <div class="row p-t-20">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <input type="hidden" name="sname" id="sname" >
+                                                <input type="text" class="form-control" id="LibraryISBNNo" name="LibraryISBNNo" placeholder="Search by ISBN Number" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-xlg-2">
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success waves-effect waves-light m-r-10" name="Search" id="Search" value="Search">Search</button>
+                                             </div>
+                                       </div>
+                                 </div>
+
+
+
+                                    <div id="Create" style="display:none;border: 1px solid #ddd;" >
+                                        <table align="center">
+                                            <tbody id="bookdetails" style="font-size: 14px">
+                                                <tr>
+                                                    <td  style="font-size:16px;font-weight:400;"><label class="control-label">Book publisher</label>:</td>
+                                                    <td>&nbsp;<label class="control-label" id="bktitle"></label></td>
+
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                   
+                                                     <td style="font-size:16px;font-weight:400;"><label class="control-label"> Author</label>:</td>
+                                                    <td>&nbsp;<label class="control-label" id="bkauthor"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size:16px;font-weight:400;"><label class="control-label">Isbn</label>:</td>
+                                                    <td>&nbsp;<label class="control-label" id="bkisbn"></label></td>
+
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                   
+                                                     <td style="font-size:16px;font-weight:400;"><label class="control-label"> status</label></td>
+                                                    <td>&nbsp;<label class="control-label" id="bkedtn"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5">&nbsp;</td>
+                                                </tr>
+
+                                                <tr><td style="font-size:16px;font-weight:400;"><label class="control-label">condition</label>:</td>
+                                                <td><label class="control-label" id="bkcndtn"></label></td>
+
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                               
+                                                    <td style="font-size:16px;font-weight:400;"><label class="control-label"> cost</label>:</td>
+                                                <td><label class="control-label" id="bkcst"></label></td></tr>
+                                                <tr><td colspan="5">&nbsp;</td></tr>
+
+                                                <tr><td style="font-size:16px;font-weight:400;"><label class="control-label">Language</label>:</td>
+                                                <td>&nbsp;<label class="control-label" id="LibraryLanguage"></label></td>
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td style="font-size:16px;font-weight:400;"><label class="control-label"> Shelf No</label>:</td>
+                                                <td>&nbsp;<label class="control-label" id="shelf"></label></td></tr>
+                                                <tr><td colspan="5">&nbsp;</td></tr>
+                                                <tr>@*<td style="font-size:16px;font-weight:400;">Shelf No:</td>*@
+                                                <td>&nbsp;@*<label class="control-label" id="shelf"></label>*@</td>
+                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                @*<td class="text-muted" style="font-size: 14px">Book Position:</td><td>&nbsp;18</td>*@</tr>
+                                                <tr><td colspan="5">&nbsp;</td></tr>
+                                            
+                                        
+                                            </tbody>
+                                        </table>                                    
+
+                                     </div>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">User type</label>
+                                                @Html.DropDownListFor(model => model.LibraryBookIssueUserType, new List<SelectListItem>
+                                                               {
+                                                                    new SelectListItem{Text="Employee",Value="Employee"},
+                                                                     new SelectListItem{Text="Student",Value="Student"},
+                                                                     new SelectListItem{Text="Teacher",Value="Teacher"},                                                       
+                                                               }, "Please Select", new { @class = "custom-select form-control required", @id = "LibraryBookIssueUserType",@required="required" })
+
+                                            </div>
+                                        </div>
+       
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Username</label>
+                                                @Html.DropDownListFor(model => model.LibraryBookIssueUserName, new SelectList(""), "please select ", new { @id = "LibraryBookIssueUserName", @class = "select2 form-control", @required = "required", @style = "width:100%" })
+
+
+                                            </div>
+                                        </div>                       
+                                    </div>
+                                    <div class="row p-t-20">
+                                       <div class="col-md-6">
+                                            <div>
+                                                <label class="control-label">Request date</label>
+                                            </div>
+                                            <div class="input-group">
+                                              
+                                                <input type="text" class="form-control" id="datepicker-autoclose" name="LibraryBookIssueRequestDate" placeholder="mm/dd/yyyy" required>
+                                                <span class="input-group-addon"><i class="icon-calender"></i></span>
+                                            </div>
+                                        </div>
+                                   </div>
+                                      </div>
+
+                                <br />
+                                <div class="form-actions">
+                                  
+                                    <button class="btn btn-info waves-effect waves-light" onclick="check()" type="submit" id="save"  name="save" style="background-color: #0c4e90;border: 1px solid #0c4e90;color:#ffffff;"><span class="btn-label"><i class="fa fa-check"></i></span>save</button>
+                                    <button class="btn btn-info waves-effect waves-light" type="button" id="cancel" name="cancel" onclick="document.location.reload(true)" style="background-color:#2f3d4a;border: 1px solid #2f3d4a;color:#ffffff;"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel</button>
+                                    <button class="btn btn-info waves-effect waves-light" type="button" style="background-color:#dc3545;border: 1px solid #dc3545;color:#ffffff;"><span class="btn-label"><i class="fa fa-list"></i></span><a href="DetailsClassRoomList" style="color:#ffffff">Back to List</a></button>
+                      
+                                </div>
+                            </form>
+                        @*</div>*@
+                    </div>
+                </div>
+            </div>
+          
+
+            
+            <div class="right-sidebar">
+                <div class="slimscrollright">
+                    <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                    <div class="r-panel-body">
+                        <ul id="themecolors" class="m-t-20">
+                            <li><b>With Light sidebar</b></li>
+                            <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                            <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                            <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                            <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                            <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                            <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                            <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                            <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                            <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                            <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                            <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                            <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                            <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                        </ul>
+                        <ul class="m-t-20 chatonline">
+                            <li><b>Chat option</b></li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+            </div>
+
+    }
+
+
+@section Scripts
+{
+     
+<script>
+    $(document).ready(function () {
+        $("#LibraryISBNNo").change(function () {
+            $("#Create").hide();
+            if ($("#LibraryISBNNo").val() == "") {
+                alert("Please select book ");
+                return false;
+            }
+            $.get("/Library/CheckStatus", { Isbn_no: $("#LibraryISBNNo").val() }, function (datamsg) {
+                var msg = datamsg.Success;
+                if (msg == "False") {
+                    document.getElementById("save").disabled = false;
+                
+                    $("#Create").show();
+                }
+                else if(msg=="true")
+                {
+                    document.getElementById("save").disabled = false;
+               
+                    $("#Create").show();
+                }
+                else {
+                    document.getElementById("save").disabled = false;
+            
+                    alert(datamsg.Message);
+                    document.getElementById("LibraryISBNNo").value = "";
+                      $("#Create").hide();
+                }
+             
+
+     
+                if (datamsg.Message != "This book is not available") {
+                  
+                    var d = $("#LibraryISBNNo").val();
+               
+                    $.get("/Library/GetIssueDetail", { Isbn_no: $("#LibraryISBNNo").val() }, function (data) {
+                        if (data != "") {
+
+
+                            document.getElementById('bktitle').innerHTML = data.LibraryBookPublisher;
+                            document.getElementById('bkauthor').innerHTML = data.LibraryBookAuthor;
+                            document.getElementById('bkisbn').innerHTML = data.LibraryISBN;
+                            document.getElementById('bkcndtn').innerHTML = data.LibraryBookCondition;
+                            document.getElementById('bkcst').innerHTML = data.LibraryBookCost;
+                            document.getElementById('bkedtn').innerHTML = data.LibraryBookStatus;
+                            document.getElementById('shelf').innerHTML = data.LibraryBookShelfNo;
+                            document.getElementById('LibraryLanguage').innerHTML = data.LibraryBookLanguage;
+                            document.getElementById('regid').innerHTML = data.LibraryBookIssueUserName;
+                        }
+                       
+
+
+                    });
+                }
+                else {
+                    $("#Create").hide();
+                }
+
+            });
+        });
+        
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#LibraryBookIssueUserName").change(function () {
+
+            $.get("/Library/GetRequestPerson", { regid: $("#LibraryBookIssueUserName").val(), Isbn_no: $("#LibraryISBNNo").val() }, function (data) {
+
+                var msg = data.Success;
+
+                if (msg == "True") {
+
+                    alert(data.Message);
+                  
+                }
+                else  {
+                   
+                }
+
+
+
+
+            });
+        });
+        });
+            </script>
+
+
+
+
+                <script>
+                    $(document).ready(function () {
+                        $("#LibraryBookIssueUserType").change(function () {
+                     
+                            $.get("/Library/GetUsername", { usertype: $("#LibraryBookIssueUserType").val() }, function (data) {
+
+                                $("#LibraryBookIssueUserName").empty();
+
+                                if ($("#LibraryBookIssueUserType").val() === "Employee") {
+
+                                    $("#LibraryBookIssueUserName").append("<option value ='" + "please select Employee" + "'>" + "please select Employee" + "</option>")
+
+                                    $.each(data, function (index, row) {
+                                        $("#LibraryBookIssueUserName").append("<option value ='" + row.EmpRegId + "'>" + row.EmpFirstName + " " + row.EmpLastName + "</option>")
+
+
+
+
+                                    });
+                                }
+                                else if ($("#LibraryBookIssueUserType").val() === "Teacher") {
+
+                                    $("#LibraryBookIssueUserName").append("<option value ='" + "please select teacher" + "'>" + "please select teacher" + "</option>")
+                                    $.each(data, function (index, row) {
+                                        $("#LibraryBookIssueUserName").append("<option value ='" + row.TcrRegId + "'>" + row.TeacherFirstName + " " + row.TeacherLastName + "</option>")
+
+
+
+
+                                    });
+                                }
+
+                                else {
+
+                                    $("#LibraryBookIssueUserName").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                                    $.each(data, function (index, row) {
+                                        $("#LibraryBookIssueUserName").append("<option value ='" + row.StudRegId + "'>" + row.StudFirstName + " " + row.StudLastName + "</option>")
+
+
+                                    });
+
+                                }
+                            });
+                        })
+                    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="@Url.Content("~/Content/template/")assets/plugins/moment/moment.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+ Date range Plugin JavaScript
+<script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script>
+
+    jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'yyyy-mm-dd'
+    });
+
+</script>
+
+<script src="@Url.Content("~/Content/template/")assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+
+
+
+
+
+}

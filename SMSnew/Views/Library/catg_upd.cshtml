@@ -1,0 +1,128 @@
+﻿@model IEnumerable<SMSnew.Models.LibraryBookCatagory>
+@{
+    ViewBag.Title = "category";
+    Layout = "~/Views/Shared/_sampleLayout.cshtml";
+}
+
+
+
+
+
+
+        @using (Html.BeginForm())
+        {
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form p-t-20">
+                       
+                                    @foreach (var item in ViewBag.edit)
+                                    {
+
+
+                                        <div class="form-group">
+                                            <label for="ClassName">Category Name</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"></div>
+   @Html.TextArea("LibraryBookCatagoryName", (string)item.LibraryBookCatagoryName, new { @class = "form-control",@required="required" })
+                                            
+                                            </div>
+                                            <br />
+                                            <label for="ClassName">Category Description</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"></div>
+                                                @Html.TextArea("LibraryBookCatagoryDescription", (string)item.LibraryBookCatagoryDescription, new { @class="form-control",@required="required" })
+                                           
+                          
+                           
+                                            </div>
+                                        </div>
+
+
+                                    }
+
+                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="Save" value="Save">Save</button>
+                                 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                @*<h4 class="card-title">Class Details</h4>*@
+                                @*<h6 class="card-subtitle"></h6>*@
+                                <div class="table-responsive m-t-40">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Category </th>
+                                                <th>Catagory Description</th>
+
+                                                <th> Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+
+                                            @foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => item.LibraryBookCatagoryName)</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.LibraryBookCatagoryDescription)
+                                                    </td>
+
+                                                    <td>
+
+                                                        <a href="@Url.Action("catg_upd", "Library", new { id = item.LibraryBookCatagoryId })" class="fa fa-pencil">
+                                                        </a>
+                                                        <a href="@Url.Action("catg_del", "Library", new { id = item.LibraryBookCatagoryId })" class="fa fa-trash-o" onclick="return confirm('Are sure wants to delete this class?');">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        
+
+            </div>
+
+        }
+
+
+
+@section Scripts
+{
+
+
+}
+
+  
+
+
+
+
+
+
+

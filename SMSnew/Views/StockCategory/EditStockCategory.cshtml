@@ -1,0 +1,66 @@
+﻿@model SMSnew.Models.StockCategory
+
+@{
+    ViewBag.Title = "EditStockCategory";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@section Styles
+{
+    <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">Stock Category</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-body">
+                            <h3 class="card-title">Edit Category</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Category</label>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @required = "required", @maxlength = "50" } })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" name="Save" id="Save" value="Save" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                <button type="button" name="Cancel" value="Cancel" onclick="location.href='@Url.Action("IndexEvent","Event")'" class="btn btn-inverse">Cancel </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+@section Scripts
+{
+}
+
+

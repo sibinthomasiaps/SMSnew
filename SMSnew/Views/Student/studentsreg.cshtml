@@ -1,0 +1,428 @@
+﻿@model SMSnew.Models.Student
+
+@{
+    ViewBag.Title = "studentsreg";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+@section Styles
+{
+    <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+
+
+        @using (Html.BeginForm("TeacherInsert", "Teacher", FormMethod.Post))
+        {
+          
+
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body wizard-content">
+                                <h4 class="card-title">Welcome to Student Registration </h4>
+                                @*//<h6 class="card-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website</a></h6>*@
+                                <form action="#" class="tab-wizard wizard-circle"></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Validation wizard -->
+                <div class="row" id="validations">
+                    <div class="col-12">
+                        <div class="card wizard-content">
+                            <div class="card-body">
+                                <h4 class="card-title">Step wizard with validation</h4>
+                                @*// <h6 class="card-subtitle">You can us the validation like what we did</h6>*@
+                                <form action="#" class="validations-wizard wizard-circle">
+                                    <!-- Step 1 -->
+                                    <h6>Profile Info</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tfirstname"> First Name : <span class="danger">*</span> </label>
+                                                    <input type="text" class="form-control required" id="tfirstname" name="tfirstname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tlastname"> Last Name : <span class="danger">*</span> </label>
+                                                    <input type="text" class="form-control required" id="tlastname" name="tlastname">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="Gender"> Gender : <span class="danger">*</span> </label>
+                                                    <div class="col-md-9">
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" class="custom-control-input" value="Male">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Male</span>
+                                                        </label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="Gender" name="Gender" type="radio" checked="" value="Female" class="custom-control-input">
+
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Female</span>
+                                                        </label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tbloodgroup">Blood Group :</label>
+                                                    @Html.DropDownList("StudBloodGroup", new List<SelectListItem>
+    {
+    new SelectListItem{Text="A Positive"},
+     new SelectListItem{Text="B Positive"},
+      new SelectListItem{Text="AB Positive"},
+       new SelectListItem{Text="O Positive"},
+       new SelectListItem{Text="A Negative"},
+     new SelectListItem{Text="B Negative"},
+      new SelectListItem{Text="AB Negative"},
+       new SelectListItem{Text="O Negative"}
+    }, "Select BloodGroup", new { @class = "custom-select form-control required" })
+                                                    @*<input type="text" class="form-control" id="tbloodgroup" name="tbloodgroup">*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tdob"> Date Of Birth: <span class="danger">*</span> </label>
+                                                    <input type="text" class="form-control required" name="mdate1" id="mdate1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tjdate">Joined Date :</label>
+                                                    <input type="text" class="form-control required" name="mdate2" id="mdate2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 2 -->
+                                    <h6>Class Details</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="tclass">Class :</label>
+                                                    @Html.DropDownListFor(model => model.StudClass, ViewBag.classname as SelectList, "---Select Class---", new { @class = "form-control required" })
+                                                    @*<input type="text" class="form-control required" id="tcontactno" name="tcontactno">*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="temail">Division  :</label>
+                                                    @Html.DropDownListFor(model => model.StudDivision, new SelectList(""), "-Select Div-", new { id = "Ddldivision", @class = "form-control required" })
+                                                    @*<input type="text" class="form-control required" id="temail" name="temail">*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 3 -->
+                                    <h6>Contact Details</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Address1</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control required" id="taddress1" name="taddress1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Address2</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control required" id="taddress2" name="taddress2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">City</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control required" id="tcity" name="tcity">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">State</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control required" id="tstate" name="tstate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">PostCode</label>
+                                                    <div class="controls col-md-9">
+                                                        <input type="text" name="tpostcode" id="tpostcode" class="form-control" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Country</label>
+                                                    <div class="col-md-9">
+                                                        @Html.DropDownList("tcountry", new List<SelectListItem>
+    {
+    new SelectListItem{Text="India"},
+     new SelectListItem{Text="China"},
+      new SelectListItem{Text="Malaysia"},
+       new SelectListItem{Text="Australia"},
+       new SelectListItem{Text="Germany"},
+     new SelectListItem{Text="US"},
+      new SelectListItem{Text="London"},
+       new SelectListItem{Text="Indonesia"}
+    }, "Select Country", new { @class = "custom-select form-control required" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Contact Number</label>
+                                                    <div class="controls col-md-9">
+                                                        <input type="text" name="tcontactno" id="tcontactno" class="form-control" required data-validation-containsnumber-regex="(\d)+" data-validation-containsnumber-message="No Characters Allowed, Only Numbers">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Email ID :</label>
+                                                    <div class="col-md-9">
+                                                        <input type="email" class="form-control" id="temail" name="temail" placeholder="sophie@example.com" required data-validation-required-message="This field is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    
+                                                    @*<input type="button" name="Save" id="Save" value="Save" onclick="clickbutton" />*@
+                                                </div>
+                                            </div>
+                                       </div>
+                                   </section>                                  
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- vertical wizard -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="@Url.Content("~/Content/template/")assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+        }
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.steps.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/jquery.validate.min.js"></script>
+    <!-- Sweet-Alert  -->
+    @*<script src="@Url.Content("~/Content/template/")assets/plugins/sweetalert/sweetalert.min.js"></script>*@
+    <script src="@Url.Content("~/Content/template/")assets/plugins/wizard/student-wizard.js"></script>
+
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script>
+        // MAterial Date picker
+        $('#mdate1').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate2').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+        $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+
+        $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
+        // Clock pickers
+        $('#single-input').clockpicker({
+            placement: 'bottom',
+            align: 'left',
+            autoclose: true,
+            'default': 'now'
+        });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+        }).find('input').change(function () {
+            console.log(this.value);
+        });
+        $('#check-minutes').click(function (e) {
+            // Have to stop propagation here
+            e.stopPropagation();
+            input.clockpicker('show').clockpicker('toggleView', 'minutes');
+        });
+        if (/mobile/i.test(navigator.userAgent)) {
+            $('input').prop('readOnly', true);
+        }
+        // Colorpicker
+        $(".colorpicker").asColorPicker();
+        $(".complex-colorpicker").asColorPicker({
+            mode: 'complex'
+        });
+        $(".gradient-colorpicker").asColorPicker({
+            mode: 'gradient'
+        });
+        // Date Picker
+        jQuery('.mydatepicker, #datepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        jQuery('#date-range').datepicker({
+            toggleActive: true
+        });
+        jQuery('#datepicker-inline').datepicker({
+            todayHighlight: true
+        });
+        // Daterange picker
+        $('.input-daterange-datepicker').daterangepicker({
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse'
+        });
+        $('.input-daterange-timepicker').daterangepicker({
+            timePicker: true,
+            format: 'MM/DD/YYYY h:mm A',
+            timePickerIncrement: 30,
+            timePicker12Hour: true,
+            timePickerSeconds: false,
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse'
+        });
+        $('.input-limit-datepicker').daterangepicker({
+            format: 'MM/DD/YYYY',
+            minDate: '06/01/2015',
+            maxDate: '06/30/2015',
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-danger',
+            cancelClass: 'btn-inverse',
+            dateLimit: {
+                days: 6
+            }
+        });
+    </script>
+    <script>
+            $(document).ready(function () {
+
+                $("#StudClass").change(function () {
+                    $("#StudDivision").empty();
+                    $.get("/Student/GetDivisionList", { StudClass: $("#StudClass").val() }, function (data) {
+                        // $("#SubjectClass").empty();
+                        $("#Ddldivision").empty();
+                        $("#Ddldivision").append("<option>" + "Select Division" + "</option>")
+                        $.each(data, function (index, row) {
+                            $("#Ddldivision").append("<option Text ='" + row.ClassRoomDivision + "'>" + row.ClassRoomDivision + "</option>")
+                        });
+                    }); 
+                })
+            });
+     </script>
+         
+
+   }
+

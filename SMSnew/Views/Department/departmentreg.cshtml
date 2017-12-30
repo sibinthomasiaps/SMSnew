@@ -1,0 +1,127 @@
+﻿@model SMSnew.Models.Department
+
+@{
+    ViewBag.Title = "departmentreg";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <!-- Container fluid  -->
+            <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white"> Department Form</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" class="form-horizontal">
+                            <div class="form-body">
+                                <h3 class="box-title">Department Info</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3"> Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=" Name" name="ParentName">
+                                                <small class="form-control-feedback"> This is inline help </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3"> Head </label>
+                                            <div class="col-md-9">
+                                              
+                                                @*@Html.DropDownList("", null as SelectList, "Please select Class", new { @class = "form-control" })*@
+
+                                                <small class="form-control-feedback"> This is inline help. </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Active Date</label>
+                                            <div class="col-md-9">
+
+                                                <input type="text" class="form-control" placeholder="2017-06-04" id="mdate">
+                                                <small class="form-control-feedback"> Select date. </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Description</label>
+                                            <div class="col-md-9">
+                                                <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                               
+                            </div>
+                            <hr>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn btn-success" name="submit" value="submit">Submit</button>
+                                                <button type="button" class="btn btn-inverse" name="cancel" value="cancel">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+
+
+}
+
+

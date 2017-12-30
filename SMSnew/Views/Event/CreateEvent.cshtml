@@ -1,0 +1,363 @@
+﻿@model SMSnew.Models.Event
+@{
+    ViewBag.Title = "CreateEvent";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@section Styles
+{
+    <link href="@Url.Content("~/Content/template/")assets/plugins/wizard/steps.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+
+        @using (Html.BeginForm("CreateEvent", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+     <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                @Html.Hidden("hdnfield", (object)ViewBag.EventFilePath)
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Events</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <h3 class="card-title">Create Event</h3>
+                                        <hr><hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Type</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventType" name="EventType" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Name</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventName" name="EventName" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+
+
+
+
+                                        <!--/row-->
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Venue</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventVenue" name="EventVenue" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Location</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventLocation" name="EventLocation" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Country</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventCountry" name="EventCountry" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Details</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventDetails" name="EventDetails" class="form-control" maxlength="500" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Email</label>
+                                                    <div class="col-md-10">
+                                                        <input type="email" id="EventEmail" name="EventEmail" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Phone</label>
+                                                    <div class="col-md-10">
+                                                        <input type="number" id="EventPH" name="EventPH" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Fax</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="EventFax" name="EventFax" class="form-control" maxlength="50" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event Participant Number</label>
+                                                    <div class="col-md-10">
+                                                        <input type="number" id="EventParticipantsNumber" name="EventParticipantsNumber" class="form-control" maxlength="10" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Event In Charge</label>
+                                                    <div class="col-md-10">
+                                                        @Html.DropDownListFor(model => model.EventInCharge, (IEnumerable<SelectListItem>)ViewBag.ddlEventInCharge as SelectList, "---Select---", new { @class = "form-control", @name = "EventInCharge", @required = "required" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Check In Date</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="CheckInDate" name="CheckInDate" class="form-control" onchange="DateCheck();" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Check Out Date</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" id="CheckOutDate" name="CheckOutDate" class="form-control" onchange="DateCheck();" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Status</label>
+                                                    <div class="col-md-10">
+                                                        @Html.DropDownListFor(model => model.Status, ViewBag.ddlStatus as SelectList, new { @class = "form-control", @name = "Status" })
+                                                        @*<select class="form-control custom-select" name="EventStatus" required>
+                                                            <option value="">---Select---</option>
+                                                            <option value="Active">Active</option>
+                                                            <option value="Inactive">Inactive</option>
+                                                            </select>*@
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Upload File</label>
+                                                    <div class="col-md-10">
+
+                                                        @Html.TextBox("file", "", new { id = "fileUpload", type = "file", onchange = "AlertChange();", accept = ".docx, .xlsx,.txt,.pdf,.docm,.xlsm,.rtf", @style = "width:265px;" })
+                                                        <input type="button" id="CancelUpload" value="Cancel" class="btn btn-inverse" onclick='CancelFile();' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="submit" name="Save" id="Save" value="Save" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                            <button type="button" name="Cancel" id="Cancel" value="Cancel" onclick="location.href='@Url.Action("CreateEvent","Event")'" class="btn btn-inverse">Cancel</button>
+                                        </div>
+                                   </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+
+        }
+
+
+
+@section Scripts
+{
+<!-- Clock Plugin JavaScript -->
+<script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/plugins/moment/min/moment.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> <!-- Clock Plugin JavaScript -->
+<script src="@Url.Content("~/Content/template/")assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script> <!-- Color Picker Plugin JavaScript -->
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> <!-- Date range Plugin JavaScript -->
+<script src="@Url.Content("~/Content/template/")assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#CheckInDate').bootstrapMaterialDatePicker({ format: 'DD-MM-YYYY', minDate: new Date(), time: false });
+                    $('#CheckOutDate').bootstrapMaterialDatePicker({ format: 'DD-MM-YYYY', minDate: new Date(), time: false });
+                });
+                function DateCheck() {
+                    var StartDate = document.getElementById('CheckInDate').value;
+                    var EndDate = document.getElementById('CheckOutDate').value;
+                    if (StartDate != '' && EndDate != '' && StartDate > EndDate) {
+                        alert("Invalid Dates !");
+                        $('#CheckInDate').val('');
+                        $('#CheckOutDate').val('');
+                        return false;
+                    }
+                    return true;
+                }
+                function CancelFile() {
+                    $('#fileUpload').val('');
+                }
+                function AlertChange() {
+
+                    var serverPath = $('#hdnfield').val();
+                    var fileName = $('#fileUpload').val().replace(/C:\\fakepath\\/i, '');
+                    var fullPath = serverPath + "\\" + fileName;
+                    CheckFileStatus(fullPath, fileName);
+                }
+                function CheckFileStatus(FilePath, FileName) {
+                    $.get("/Event/CheckFileExist", { UploadedFilePath: FilePath, FullFileName: FileName }, function (data) {
+                        if (data == 'Invalid') {
+                            alert('Invalid file !');
+                            $('#fileUpload').val('');
+                            return false;
+                        }
+                        else if (data == 'Exist') {
+                            alert('File with same name already exist !');
+                            $('#fileUpload').val('');
+                            return false;
+                        }
+                        else {
+                            return true;
+                        }
+                    });
+                }
+            </script>
+}

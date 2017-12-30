@@ -1,0 +1,208 @@
+﻿@model SMSnew.Models.LibraryBook
+
+@{
+    ViewBag.Title = "Library Book";
+    Layout = "~/Views/Shared/_sampleLayout.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+        @using (Html.BeginForm())
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Library Book</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        @*<h3 class="card-title">Library Book</h3>*@
+                                        
+                                        <div class="row p-t-20">
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Author</label>
+                                                    @Html.DropDownList("author", ViewBag.author as SelectList, "Please select", new { id = "author", @class = "form-control", @required = "required" })
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Title</label>
+                                                    @Html.DropDownList("Booktitle", new SelectList(""), "please select class", new { id = "Booktitle", @class = "select2 form-control", @required = "required", @style = "width:100%" })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Publisher</label>
+                                                    @Html.DropDownList("LibraryBookRegId", new SelectList(""), "please select class", new { id = "LibraryBookRegId", @class = "select2 form-control", @required = "required", @style = "width:100%" })
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">ISBN</label>
+                                                    <input type="text" class="form-control" id="LibraryISBN" name="LibraryISBN" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Condition</label>
+                                                    @Html.DropDownListFor(model => model.LibraryBookCondition, new List<SelectListItem>
+                                                               {
+                                                                    new SelectListItem{Text="New",Value="New"},
+                                                                     new SelectListItem{Text="Fine",Value="Fine"},
+                                                                     new SelectListItem{Text="Very good",Value="Very good"},
+                                                                     new SelectListItem{Text="good",Value="good"},
+                                                                     new SelectListItem{Text="Poor",Value="Poor"},
+                                                               }, "Please Select", new { @class = "custom-select form-control required" })
+
+   
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Shelf number</label>
+
+                                                    <input type="text" class="form-control" id="LibraryBookShelfNo" name="LibraryBookShelfNo" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Language</label>
+                                                                @Html.DropDownListFor(model => model.LibraryBookLanguage, new List<SelectListItem>
+                                                               {
+                                                                    new SelectListItem{Text="Malayalam",Value="Malayalam"},
+                                                                     new SelectListItem{Text="English",Value="English"},
+                                                                     new SelectListItem{Text="Hindi",Value="Hindi"},
+                                                                     new SelectListItem{Text="Tamil",Value="Tamil"},
+                                                                     new SelectListItem{Text="French",Value="French"},
+                                                               }, "Please Select", new { @class = "custom-select form-control required" })
+
+
+
+                                                  </div>
+                                            </div>
+                                      
+                                        </div>
+
+
+
+
+                                        <div class="form-actions">
+                                            <button class="btn btn-info waves-effect waves-light" type="submit" id="save" name="save" style="background-color: #0c4e90;border: 1px solid #0c4e90;color:#ffffff;"><span class="btn-label"><i class="fa fa-check"></i></span>save</button>
+                                        </div>
+                                    </div>
+                                    @Html.ActionLink("Go To List", "book_details")
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        }
+
+
+@section Scripts
+{
+    
+    <script>
+        $("#save").click(function () {
+        
+            $.get("/Library/GetISBNDetail", { Isbn_no: $("#LibraryISBN").val() }, function (data) {
+
+
+                var d = data;
+                if (d != 0) {
+                    alert("This book is already registered");
+
+                    return false;
+                }
+                return false;
+            });
+            return true;
+        });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#LibraryBookIssueBookNo").change(function () {
+            var e = $("#LibraryBookIssueBookNo").val();
+
+            $.get("/libarybookissue/GetDivisionList2", { StudId: $("#LibraryBookIssueBookNo").val() }, function (data1) {
+                document.getElementById("title").value = data1.LibraryBookTitle;
+                document.getElementById("Edition").value = data1.LibraryBookEdition;
+                document.getElementById("Author").value = data1.LibraryBookAuthor;
+                document.getElementById("bookmo").value = data1.LibraryBookNo;
+            });
+        })
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#author").change(function () {
+            $.get("/Library/GetTitleList", { author: $("#author").val() }, function (data) {
+
+                $("#Booktitle").empty();
+                $("#Booktitle").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                $.each(data, function (index, row) {
+                 
+                    $("#Booktitle").append("<option value ='" + row.LibraryBookTitle + "'>" + row.LibraryBookTitle + "</option>")
+                });
+            });
+        })
+    });
+</script>
+
+    <script>
+    $(document).ready(function () {
+        $("#Booktitle").change(function () {
+            $.get("/Library/GetpublisherList", { author: $("#author").val(), booktitle: $("#Booktitle").val() }, function (data) {
+
+                $("#LibraryBookRegId").empty();
+                $("#LibraryBookRegId").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                $.each(data, function (index, row) {
+                
+                    $("#LibraryBookRegId").append("<option value ='" + row.LibraryBookReg + "'>" + row.LibraryBookPublisher + "</option>")
+                });
+            });
+        })
+    });
+</script>
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

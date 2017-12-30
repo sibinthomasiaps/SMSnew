@@ -1,0 +1,20 @@
+Database name  &   Database user name       -    shajiks_ems
+Database  password  -    shajiks_ems@123
+
+
+FTP - 
+UserName - ems
+Password - X5mmi9&0
+
+
+Godaddy Account Details
+--------------------------
+customer id : 50845102
+support pin : 0839
+
+
+
+Database-EMS
+------------
+user name - ems
+password - ems@123

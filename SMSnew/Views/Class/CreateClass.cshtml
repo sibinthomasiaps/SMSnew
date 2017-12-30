@@ -1,0 +1,245 @@
+﻿@model IEnumerable<SMSnew.Models.Class>
+
+@{
+    ViewBag.Title = "CreateClass";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+
+        @using (Html.BeginForm())
+        {
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    </div>
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Class</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">                              
+                                <form class="form p-t-20">
+                                    <div class="form-group">
+                                        <label for="ClassName">Class Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"></div>
+                                            @*<label class="control-label">Class</label>*@
+                                            <input type="text" class="form-control" id="ClassName" name="ClassName" placeholder="STD I" required>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-info waves-effect waves-light" type="submit" id="submit" name="submit" style="background-color: #0c4e90;border: 1px solid #0c4e90;color:#ffffff;"><span class="btn-label"><i class="fa fa-check"></i></span>Save</button>
+                                    <button class="btn btn-info waves-effect waves-light" type="submit" id="cancel" name="cancel" onclick="document.location.reload(true)" style="background-color:#2f3d4a;border: 1px solid #2f3d4a;color:#ffffff;"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel</button>
+                                    @*<button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit" value="submit">Submit</button>
+                                    <button type="submit" class="btn btn-inverse waves-effect waves-light" name="cancel" value="cancel">Cancel</button>*@
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Class Details</h4>
+                                <h6 class="card-subtitle"></h6>
+                                <div class="table-responsive m-t-40">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Class ID</th>
+                                                <th>Class Name</th>
+                                                <th>Status</th>
+                                                <th> Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+
+                                        </tfoot>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => item.ClassId)</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ClassName)
+                                                    </td>
+                                                    <td>
+                                                        @if(item.ClassStatus==1)
+                                                    {
+                                                            <label>Active</label>
+                                                        }
+                                                        else
+                                                        {
+                                                            <label>Deactive</label>
+                                                        }
+
+                                                    </td>
+
+
+
+                                                    <td>
+                                                      
+                                                        <a href="@Url.Action("EditClassList", "Class", new { id = item.ClassId })" class="fa fa-pencil">
+                                                        </a>
+                                                        <a href="@Url.Action("DeleteClass", "Class", new { id = item.ClassId })" class="fa fa-trash-o" onclick="return confirm('Are sure wants to delete this class?');">
+                                                        </a>
+                                                   </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        }
+        
+@section Scripts
+{
+      <!-- This is data table -->
+<script src="@Url.Content("~/Content/template/")assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- start - This is for export functionality only -->
+<script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="@Url.Content("~/Content/template/")assets/buttons/1.2.2/js/buttons.print.min.js"></script>
+<!-- end - This is for export functionality only -->
+<script>
+    $(document).ready(function () {
+        $('#example23').DataTable();
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function () {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    //$('#example23').DataTable({
+    //    dom: 'Bfrtip',
+    //    buttons: [
+    //        'copy', 'csv', 'excel', 'pdf', 'print'
+    //    ]
+    //});
+</script>
+
+
+}

@@ -1,0 +1,531 @@
+﻿@model SMSnew.Models.Assignment
+
+@{
+    ViewBag.Title = "updateassignment";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>editassignment</h2>
+
+
+
+
+@Html.ActionLink("Download Here", "DownloadExampleFiles", "Product", new { fileName = "variation-example" }, new { @target = "_blank" })
+
+          
+       
+
+
+
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <div>
+
+
+
+
+
+
+
+
+
+        <body>
+            @using (@Html.BeginForm("updateassignment", "Assignment",FormMethod.Get, FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+            {
+
+ <!-- Container fluid  -->
+        <!-- ============================================================== -->
+                <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+                    <!-- Row -->
+                    <div class="row">
+
+                    </div>
+                    <!-- Row -->
+                    <!-- Row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-outline-info">
+                                <div class="card-header">
+                                    <h4 class="m-b-0 text-white">Assignment Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="#" class="form-horizontal">
+                                        <div class="form-body">
+                                            <h3 class="box-title">Profile Creation</h3>
+                                            <hr class="m-t-0 m-b-40">
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px">
+
+                                                        <label class="control-label col-md-3"> Title</label>
+
+
+
+
+                                                        <div class="col-md-9">
+                                                            @*<input type="text" class="form-control form-control-danger" placeholder="assignment title" name="AssignmentTitle">*@
+                                                            @Html.EditorFor(model => model.AssignmentTitle, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                            @Html.ValidationMessageFor(model => model.AssignmentTitle, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+                                                        <label class="control-label col-md-3">Class</label>
+                                                        <div class="col-md-9">
+                                                            @*@Html.TextBoxFor(model => model.AssignmentClass,  new { @class = "form-control", @required = "required" })*@
+                                                            @Html.DropDownListFor(model => model.AssignmentClass, ViewBag.classname as SelectList, "---Select Class---", new { id="class1", @class = "form-control", @required = "required" })
+
+                                                            @Html.ValidationMessageFor(model => model.AssignmentClass)
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+                                                        <label class="control-label col-md-3"> Division</label>
+                                                        <div class="col-md-9">
+
+
+
+
+
+                                                            @*@Html.DropDownListFor(model => model.AssignmentDivision, new SelectList(""), "-Select Div-", new { id = "Ddldivision", @class = "form-control" })*@
+                                                            @*@Html.DropDownList("AssignmentDivision", ViewBag.cls2 as SelectList, "---select division---", new { @class = "form-control", @required = "required" })*@
+
+                                                            @Html.HiddenFor(model => model.AssignmentDivision)
+                                                            @Html.DropDownListFor(model => model.AssignmentDivision1, new SelectList(""), "-Select Division-", new { id = "Ddldivision", @class = "form-control", @required = "required" })
+                                                            @*@Html.DropDownListFor(model => model.AssignmentDivision, new SelectList(""), "-Select Div-", new { id = "Ddldivision", @class = "form-control", @required = "required" })*@
+                                                            @Html.ValidationMessageFor(model => model.AssignmentDivision)
+
+
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+
+                                                        <label class="control-label col-md-3"> Subject</label>
+
+
+
+
+                                                        <div class="col-md-9">
+                                                            @*@Html.DropDownList("AssignmentSubject", ViewBag.cls3 as SelectList, "---select subject---",new { @class = "form-control",@required  = "required" })*@
+                                                            @Html.HiddenFor(model => model.AssignmentSubject)
+                                                            @Html.DropDownListFor(model => model.AssignmentSubject1, new SelectList(""), "-Select sub-", new { id = "Ddlsub", @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.AssignmentSubject)
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+
+
+
+
+                                                        <label class="control-label col-md-3"> Date</label>
+
+
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(model => model.AssignmentDateOfSubmit, "{0:yyyy-MM-dd}", new { id = "min-date", @class = "form-control", @required = "required" })
+
+                                                        </div>
+                                                       
+
+                                                      
+                                                       
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+                                                        <label class="control-label col-md-3"> Attachment</label>
+
+                                                             
+
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(model => model.AssignmentAttachment, new { htmlAttributes = new {id = "Attachment", @class = "form-control", @required = "required" } })
+                                                            @*@Html.TextBox("file", "", new { type = "file" })*@
+
+                                                            @Html.TextBox("file", "", new { id = "Attachment", type = "file" })
+                                                            <span style="color:red"> @Html.ValidationMessageFor(m => m.AssignmentAttachment, string.Empty, new { id = "validationTxt" })</span>
+
+
+                                                          
+                                                            @*@Html.ValidationMessageFor(model => model.AssignmentAttachment)*@
+
+
+
+
+
+
+
+
+                                                        </div>
+
+
+                                                        @*@Html.ActionLink("uploaded file", "downloadFile",
+
+               new { onclick = "return confirm('download file?');" })*@
+                                                      
+                                                                  
+                                                               
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="row">
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group row"style="margin-bottom:45px;">
+                                                        <label class="control-label col-md-3">Description</label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextAreaFor(model => model.AssignmentDescription, new { @class = "form-control", @rows = 3, @required = "required" })
+                                                                 @Html.ValidationMessageFor(m=>m.AssignmentDescription)
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                        <hr>
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+
+                                                            <button type="submit" class="btn btn-success" value="save" name="Save" onclick="SelectedIndexChanged()">Submit</button>
+                                                            <button type="submit" class="btn btn-inverse" value="cancel" name="Cancel">Cancel</button>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- Row -->
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+
+
+                </div>
+
+
+            }
+        </body>
+
+
+
+
+
+
+        @*}*@
+
+
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer"> © 2017 Anikayaj software SolutionsPvt Ltd. </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+@*script for second dropdown.................*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#class1").change(function () {
+            //$("#AssignmentSubject").empty();
+            $("#AssignmentDivision").empty();
+            $("#Ddldivision").empty();
+
+
+            document.getElementById("AssignmentDivision").value = '';
+            $.get("/Assignment/GetDivisionList1", { Class1: $("#class1").val() }, function (data) {
+                $("#AssignmentDivision").empty();
+                $("#Ddldivision").empty();
+
+                $("#Ddldivision").append("<option>" + "please select" + "</option>")
+                $.each(data, function (index, row) {
+
+                    $("#Ddldivision").append("<option Text ='" + row.StudDivision + "'>" + row.StudDivision + "</option>")
+
+
+                });
+            });
+        })
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#class1").change(function () {
+            //$("#AssignmentSubject").empty();
+            $("#AssignmentSubject").empty();
+            $("#Ddlsub").empty();
+
+
+            document.getElementById("AssignmentSubject").value = '';
+            $.get("/Assignment/GetSubjectList1", { Class1: $("#class1").val() }, function (data) {
+                $("#AssignmentSubject").empty();
+                $("#Ddlsub").empty();
+
+                $("#Ddlsub").append("<option>" + "please select" + "</option>")
+                $.each(data, function (index, row) {
+
+                    $("#Ddlsub").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+
+
+                });
+            });
+        })
+    });
+</script>
+
+
+
+@*<script>
+    $(document).ready(function () {
+        $("#AssignmentClass").change(function () {
+            $("#AssignmentSubject").empty();
+
+            $.get("/Assignmentnew/GetSubjectList", { AssignmentClass: $("#AssignmentClass").val() }, function (data) {
+                // $("#SubjectClass").empty();
+                $("#Ddlsub").empty();
+                $("#Ddlsub").append("<option value ='" + "please select" + "'>" + "please select" + "</option>")
+                $.each(data, function (index, row) {
+                    $("#Ddlsub").append("<option Text ='" + row.SubjectName + "'>" + row.SubjectName + "</option>")
+                });
+            });
+        })
+    });
+</script>*@
+
+
+
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+<script type="text/jscript">
+
+
+    function getNameFromPath(strFilepath) {
+
+        var objRE = new RegExp(/([^\/\\]+)$/);
+
+        var strName = objRE.exec(strFilepath);
+
+
+
+        if (strName == null) {
+
+            return null;
+
+        }
+
+        else {
+
+            return strName[0];
+
+        }
+
+    }
+
+
+
+    $(function () {
+
+        $("#Attachment").change(function () {
+
+            var file = getNameFromPath($(this).val());
+
+            if (file != null) {
+
+                var extension = file.substr((file.lastIndexOf('.') + 1));
+
+                switch (extension) {
+
+                    case 'docx':
+
+                    case 'docm':
+
+                    case 'xlsx':
+                    case 'xlsm':
+
+                    case 'txt':
+
+                    case 'pdf':
+                        flag = true;
+
+                        break;
+
+                    default:
+
+                        flag = false;
+
+                }
+
+            }
+
+            if (flag == false) {
+
+                $("#validationTxt").text("only . docx,.xlsx,.txt,.pdf,.docm,.xlsm files are permitted");
+                document.getElementById("Attachment").value = "";
+                return false;
+
+            }
+
+            //else {
+
+            //    var size = GetFileSize('file');
+
+            //    if (size > 3) {
+
+            //        $("#validationTxt").text("You can upload file up to 1 MB");
+
+            //    }
+
+            //    else {
+
+            //        $("#validationTxt").text("");
+
+            //    }
+
+            //  }
+
+        });
+
+    });
+
+</script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.11.4.min.js")" type="text/javascript"></script>       
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+    $('#ques_32\\[\\]').on('change', function () {
+        $('#Attachment').val(this.value)
+    });
+</script>
+
+<script>
+    var stdiv = document.getElementById("AssignmentDivision").value;
+    $("#Ddldivision").empty();
+    $("#Ddldivision").append("<option Text ='" + stdiv + "'>" + stdiv + "</option>")
+</script>
+
+<script>
+    var stsub = document.getElementById("AssignmentSubject").value;
+    $("#Ddlsub").empty();
+    $("#Ddlsub").append("<option Text ='" + stsub + "'>" + stsub + "</option>")
+</script>

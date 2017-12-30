@@ -1,0 +1,147 @@
+﻿@model SMSnew.Models.LibraryBook
+
+@{
+    ViewBag.Title = "LibraryBook";
+    Layout = "~/Views/Shared/_sampleLayout.cshtml";
+}
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+        @using (Html.BeginForm())
+        {
+             @Html.AntiForgeryToken()
+      
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.LibraryId)
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Library Book</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                      
+                              
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                         <div class="form-group">
+                                             <label class="control-label">Shelf number</label>
+                                                      @Html.EditorFor(model => model.LibraryBookShelfNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                         @Html.ValidationMessageFor(model => model.LibraryBookShelfNo, "", new { @class = "text-danger" })
+
+
+                                                         </div>
+                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">ISBN</label>
+                                                    @Html.EditorFor(model => model.LibraryISBN, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly" } })
+                                                    @Html.ValidationMessageFor(model => model.LibraryISBN, "", new { @class = "text-danger" })
+                                                     </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Condition</label>
+                                                    @Html.DropDownListFor(model => model.LibraryBookCondition, new List<SelectListItem>
+                                                               {
+                                                                    new SelectListItem{Text="New",Value="New"},
+                                                                     new SelectListItem{Text="Fine",Value="Fine"},
+                                                                     new SelectListItem{Text="Very good",Value="Very good"},
+                                                                     new SelectListItem{Text="good",Value="good"},
+                                                                     new SelectListItem{Text="Poor",Value="Poor"},
+                                                               }, "Please Select", new { @class = "custom-select form-control required" })
+
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Language</label>
+                                                    @Html.DropDownListFor(model => model.LibraryBookLanguage, new List<SelectListItem>
+                                                               {
+                                                                    new SelectListItem{Text="Malayalam",Value="Malayalam"},
+                                                                     new SelectListItem{Text="English",Value="English"},
+                                                                     new SelectListItem{Text="Hindi",Value="Hindi"},
+                                                                     new SelectListItem{Text="Tamil",Value="Tamil"},
+                                                                     new SelectListItem{Text="French",Value="French"},
+                                                               }, "Please Select", new { @class = "custom-select form-control required" })
+
+
+                                                              </div>
+                                            </div>
+                                        </div>
+                                       
+
+
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-success" value="save" name="save"> <i class="fa fa-check"></i> Save</button>
+                                         
+                                          </div>
+                                    </div>
+                                  
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+  
+@section Scripts
+{
+<script>
+    $(document).ready(function () {
+        $("#LibraryBookIssueBookNo").change(function () {
+            var e = $("#LibraryBookIssueBookNo").val();
+
+       
+             $.get("/libarybookissue/GetDivisionList2", { StudId: $("#LibraryBookIssueBookNo").val() }, function (data1) {
+                document.getElementById("title").value = data1.LibraryBookTitle;
+                document.getElementById("Edition").value = data1.LibraryBookEdition;
+                document.getElementById("Author").value = data1.LibraryBookAuthor;
+                document.getElementById("bookmo").value = data1.LibraryBookNo;
+            });
+        })
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#author").change(function () {
+            $.get("/Library/GetTitleList", { author: $("#author").val() }, function (data) {
+
+                $("#Booktitle").empty();
+                $("#Booktitle").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                $.each(data, function (index, row) {
+                 
+                    $("#Booktitle").append("<option value ='" + row.LibraryBookTitle + "'>" + row.LibraryBookTitle + "</option>")
+                });
+            });
+        })
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#Booktitle").change(function () {
+            $.get("/Library/GetpublisherList", { author: $("#author").val(), booktitle: $("#Booktitle").val() }, function (data) {
+
+                $("#LibraryBookGroup").empty();
+                $("#LibraryBookGroup").append("<option value ='" + "please select Student" + "'>" + "please select Student" + "</option>")
+                $.each(data, function (index, row) {
+               
+                    $("#LibraryBookGroup").append("<option value ='" + row.LibraryBookReg + "'>" + row.LibraryBookPublisher + "</option>")
+                });
+            });
+        })
+    });
+</script>
+
+}

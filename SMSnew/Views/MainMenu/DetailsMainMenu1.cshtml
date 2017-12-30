@@ -1,0 +1,138 @@
+﻿@model IEnumerable<SMSnew.Models.MainMenu>
+
+@{
+    ViewBag.Title = "DetailsMainMenu";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+    var grid = new WebGrid(Model); 
+}
+@section Styles
+{
+
+<style type="text/css">
+    .webgrid-table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #98BF21;
+            padding: 3px 7px 2px;
+        }
+
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+</style>
+
+}
+
+
+<div id="gridContent" style=" padding:20px; ">
+    @grid.GetHtml(
+        tableStyle: "webgrid-table",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        mode: WebGridPagerModes.All,
+        columns:
+            grid.Columns(
+             grid.Column("MenuId", format: @<text>  <span class="display-mode">@item.MainMenuId </span> <label id="MainMenuId" class="edit-mode">@item.MainMenuId</label> </text>, style: "col1Width" ),
+             grid.Column("MenuName", "MenuName", format: @<text>  <span class="display-mode"> <label id="lblMenuName">@item.MenuName</label> </span> <input type="text" id="MenuName" value="@item.MenuName" class="edit-mode" /></text>, style: "col2Width"),
+             @*grid.Column("SurName", "Sur Name", format: @<text> <span class="display-mode"> <label id="lblSurName">@item.SurName</label> </span>  <input type="text" id="SurName" value="@item.SurName" class="edit-mode" /> </text>, style: "col2Width"),*@
+             grid.Column("Action", format: @<text>
+        <button class="edit-user display-mode">Edit</button>
+        <button class="save-user edit-mode">Save</button>
+        <button class="cancel-user edit-mode">Cancel</button>
+            </text>, style: "col3Width", canSort: false)
+               ))
+    </div>
+
+    @*<div id="gridContent" style=" padding:20px; ">
+            @grid.GetHtml(
+                tableStyle: "webgrid-table",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                alternatingRowStyle: "webgrid-alternating-row",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+                     grid.Columns(
+                     grid.Column("ID", format: @<text>  <span class="display-mode">@item.MainMenuId </span> <label id="UserID" class="edit-mode">@item.MainMenuId</label> </text>, style: "col1Width" ),
+                     grid.Column("Name", "Name", format: @<text>  <span class="display-mode"> <label id="lblName">@item.MenuName</label> </span> <input type="text" id="Name" value="@item.MenuName" class="edit-mode" /></text>, style: "col2Width"),
+                    // grid.Column("SurName", "Sur Name", format: @<text> <span class="display-mode"> <label id="lblSurName">@item.SurName</label> </span>  <input type="text" id="SurName" value="@item.SurName" class="edit-mode" /> </text>, style: "col2Width"),
+                     grid.Column("Action", format: @<text>
+                <button class="edit-user display-mode">Edit</button>
+                <button class="save-user edit-mode">Save</button>
+                <button class="cancel-user edit-mode">Cancel</button>
+                    </text>,  style: "col3Width" , canSort: false)
+            ))
+        </div>*@
+
+    @section Scripts
+    {
+<script type="text/javascript">
+    $(function () {
+        $('.edit-mode').hide();
+        $('.edit-user, .cancel-user').on('click', function () {
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit-mode, .display-mode').toggle();
+        });
+
+        $('.save-user').on('click', function () {
+            var tr = $(this).parents('tr:first');
+            var Name = tr.find("#MenuName").val();
+            //var SurName = tr.find("#SurName").val();
+            var UserID = tr.find("#MainMenuId").html();
+            tr.find("#lblMenuName").text(Name);
+           // tr.find("#lblSurName").text(SurName);
+            tr.find('.edit-mode, .display-mode').toggle();
+            var UserModel =
+            {
+                "MainMenuId": UserID,
+                "MenuName": Name,
+                
+            };
+            $.ajax({
+                url: '/MainMenu/ChangeUser/',
+                data: JSON.stringify(UserModel),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert(data);
+                }
+            });
+
+        });
+    })
+</script>
+
+
+
+  
+
+
+      
+    }
